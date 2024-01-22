@@ -959,3 +959,74 @@ header {
   margin: 0 auto;
 }
 /* Footer finished */
+
+
+
+
+/* Media Query para 320px */
+@media (max-width: 320px) {
+  main {
+    width: 100%;
+  }
+  #l-col,
+  #m-col,
+  #r-col {
+    width: 100%;
+    padding: 0;
+  }
+  #p-tabs {
+    display: none;
+  }
+  #p-tabs-m {
+    display: block;
+  }
+  #p-tab-m {
+    display: none;
+  }
+  #composer {
+    display: none;
+  }
+  #c-tabs-cvr {
+    display: block;
+  }
+  #c-tabs {
+    display: none;
+  }
+  #c-c-main {
+    display: block;
+  }
+}
+
+/* Media Query para tablet */
+@media (max-width: 768px) {
+  main {
+    width: 100%;
+  }
+  #l-col,
+  #m-col,
+  #r-col {
+    width: 100%;
+    padding: 0;
+  }
+  #p-tabs {
+    display: none;
+  }
+  #p-tabs-m {
+    display: block;
+  }
+  #p-tab-m {
+    display: none;
+  }
+  #composer {
+    display: none;
+  }
+  #c-tabs-cvr {
+    display: block;
+  }
+  #c-tabs {
+    display: none;
+  }
+  #c-c-main {
+    display: block;
+  }
+}
