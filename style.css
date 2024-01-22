@@ -967,3 +967,24 @@ header {
      display: none;
   }
 }
+@media (max-width: 320px) {
+  #profile-upper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #profile-banner-image img, #profile-pic img {
+    width: 100%; /* Ajusta las imágenes para que ocupen todo el ancho en pantallas pequeñas */
+    height: auto;
+  }
+
+  #profile-pic {
+    order: -1; /* Esto sitúa la imagen del perfil sobre el banner en pantallas pequeñas */
+    width: 100%; /* Asegura que la imagen del perfil no se desborde del contenedor */
+    margin-bottom: 10px;
+  }
+
+  #u-name {
+    /* Ajustes adicionales para el nombre del usuario si es necesario */
+  }
+}
