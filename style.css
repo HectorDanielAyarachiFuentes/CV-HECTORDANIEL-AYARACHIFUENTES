@@ -961,34 +961,9 @@ header {
 /* Footer finished */
 
 
-
-/* Media query para tablets (768px) */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-  }
-
-  .profile-details, .left-column, .middle-column {
-    width: 100%;
-  }
-
-  .middle-column .tabs {
-    flex-direction: column;
-  }
-}
-
-/* Media query para teléfonos móviles (320px) */
+/* Media Queries para celular (max-width: 480px) */
 @media (max-width: 320px) {
-  header input[type="text"] {
-    width: 100%;
-    margin: 10px 0;
-  }
-
-  .profile-details a, .profile-details img {
-    margin: 5px 0;
-  }
-
-  .left-column, .middle-column {
-    padding: 0;
+  #device-bar-1 {
+     display: none;
   }
 }
