@@ -1055,5 +1055,13 @@ header {
     display: none;
 }
 
+#u-name {
+  position: absolute;
+  top: -89%;
+  left: 2x;
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: bold;
+}
 
 }
