@@ -1041,8 +1041,6 @@ header {
 
 @media (max-width: 320px) {
 
-
-
   #profile-banner-image img {
     /* Adaptar al ancho completo */
     width: 100%;
@@ -1050,18 +1048,11 @@ header {
     display: block; /* Elimina cualquier espacio extra debajo de la imagen */
     object-fit: cover; /* Asegura que la imagen se ajuste dentro del área disponible, mostrando la imagen completa */
   }
-  
-  #device-bar-1, #search-form, #p-tabs, #m-btns {
-    display: none;
-}
 
-#u-name {
-  position: absolute;
-  top: -89%;
-  left: 2x;
-  color: #ffffff;
-  font-size: 36px;
-  font-weight: bold;
+  .tb, .td {
+    /* Ajustes para tablas y celdas */
+    width: 100%;
+    display: inline-block;
+   margin: -5px;
 }
-
 }
