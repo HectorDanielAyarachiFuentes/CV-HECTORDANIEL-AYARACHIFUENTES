@@ -1044,40 +1044,60 @@ header {
     width: 100%;
     padding: 0;
   }
+
   #l-col,
   #m-col,
   #r-col {
     width: 100%;
     padding: 0 10px;
   }
+
+  #profile-banner-image img {
+    /* Adaptar al ancho completo */
+    width: 100%;
+    height: 120%; /* Ajustar la altura automáticamente */
+    display: block; /* Elimina cualquier espacio extra debajo de la imagen */
+    object-fit: cover; /* Asegura que la imagen se ajuste dentro del área disponible, mostrando la imagen completa */
+
+  }
+
+
+
   #main-content {
     padding: 20px 10px 0px 10px;
   }
+
   #profile-d {
     left: 10px;
   }
+
   #profile-pic {
     width: 120px;
     height: 120px;
   }
+
   #u-name {
     font-size: 18px;
     left: 70px;
   }
+
   #m-btns,
   #edit-profile {
     bottom: 5px;
     right: 10px;
   }
+
   .l-cnt,
   .m-cnt,
   .r-cnt {
     padding: 10px;
   }
+
   .l-mrg,
   .m-mrg,
   .r-mrg {
     margin-top: 10px;
   }
-  /* Ajustes a otros elementos según sea necesario */
+
+  /* Otros ajustes según sea necesario */
 }
