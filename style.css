@@ -435,39 +435,40 @@ header {
 }
 
 #photos .tb .tr:nth-child(1) .td:nth-child(1) {
-  background-image: url("https://imagizer.imageshack.com/img922/8637/NN4aPj.jpg");
+  background-image: url("Imagenes/Ramon.jpg");
 }
 
+
 #photos .tb .tr:nth-child(1) .td:nth-child(2) {
-  background-image: url("https://imagizer.imageshack.com/img923/528/iJy0X5.jpg");
+  background-image: url("Imagenes/Perropianista.jpg");
 }
 
 #photos .tb .tr:nth-child(1) .td:nth-child(3) {
-  background-image: url("https://imagizer.imageshack.com/img923/9781/26phSy.jpg");
+  background-image: url("Imagenes/MollyHermosa.jpg");
 }
 
 #photos .tb .tr:nth-child(2) .td:nth-child(1) {
-  background-image: url("https://imagizer.imageshack.com/img921/8417/svxO7y.jpg");
+  background-image: url("Imagenes/Hectorrammon.jpg");
 }
 
 #photos .tb .tr:nth-child(2) .td:nth-child(2) {
-  background-image: url("https://imagizer.imageshack.com/img921/6488/i2Hb4U.jpg");
+  background-image: url("Imagenes/Hector.jpg");
 }
 
 #photos .tb .tr:nth-child(2) .td:nth-child(3) {
-  background-image: url("https://imagizer.imageshack.com/img921/2453/J7PICR.jpg");
+  background-image: url("Imagenes/Dulcehermosa4.jpg");
 }
 
 #photos .tb .tr:nth-child(3) .td:nth-child(1) {
-  background-image: url("https://imagizer.imageshack.com/img921/3021/8uZZY2.jpg");
+  background-image: url("Imagenes/Dulcehermosa3.jpg");
 }
 
 #photos .tb .tr:nth-child(3) .td:nth-child(2) {
-  background-image: url("https://imagizer.imageshack.com/img923/3992/22mL29.jpg");
+  background-image: url("Imagenes/Dulcehermosa1.jpg");
 }
 
 #photos .tb .tr:nth-child(3) .td:nth-child(3) {
-  background-image: url("https://imagizer.imageshack.com/img921/2711/JXSt41.jpg");
+  background-image: url("Imagenes/Dulcehermosa.jpg");
 }
 
 #k-nm {
