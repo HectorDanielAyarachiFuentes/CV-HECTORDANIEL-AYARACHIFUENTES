@@ -1035,7 +1035,7 @@ header {
   .l-cnt {
     padding: 20px;
     background-color: #fff;
-    box-shadow: -2px 3px 3px #ddd;
+    box-shadow: -6px -3px -3px #dddddda5;
     margin: 10px;
     position: relative; /* Agregado para gestionar correctamente left y right */
     left: -50px;
