@@ -1078,3 +1078,14 @@ header {
 
 
 }
+
+
+/*-Efecto Hoover-----*/
+.on-ct a img {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.on-ct a:hover img {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
