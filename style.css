@@ -947,14 +947,22 @@ header {
 
 /* Footer */
 #device-bar-2 {
+  position: absolute;
+  left: 0;
+  width: 100%;
   padding: 9px 0px 13px 0px;
-  background-color: #000;
+  background-color: black;
+  margin-top: 1050px; /* Esto moverá tu div 1050px hacia abajo */
+  margin-left: -5px; /* Asumiendo que quieres un margen a la izquierda */
+  margin-right: 15px; /* Asumiendo que quieres un margen a la derecha */
+  margin-bottom: 15px; /* Asumiendo que quieres un margen abajo */
 }
+
 
 #device-bar-2 i {
   display: block;
   width: 40px;
-  color: #fff;
+  color: #5e5d5d;
   font-size: 40px;
   text-align: center;
   margin: 0 auto;
@@ -967,76 +975,6 @@ header {
 
 
 
-@media (max-width: 768px) {
-  main {
-    width: 95%;
-    margin: 0 auto;
-  }
-  #l-col,
-  #m-col,
-  #r-col {
-    width: 100%;
-    padding: 0 15px;
-  }
-  #main-content {
-    padding: 30px 15px 0px 15px;
-  }
-  #device-bar-1 button {
-    margin: 4px;
-  }
-  #profile-d {
-    left: 20px;
-  }
-  #u-name {
-    font-size: 24px;
-    left: 100px;
-  }
-  #m-btns {
-    right: 20px;
-  }
-  #edit-profile {
-    right: 10px;
-  }
-}
-
-/* Media Query para dispositivos móviles con resolución de 480px */
-
-@media (max-width: 480px) {
-  #search-form form {
-    width: 200px;
-  }
-  #f-name-l,
-  #m-td {
-    display: none;
-  }
-  #profile-d {
-    left: 15px;
-  }
-  #profile-pic {
-    width: 140px;
-    height: 140px;
-  }
-  #u-name {
-    font-size: 20px;
-    left: 80px;
-  }
-  #m-btns {
-    bottom: 10px;
-  }
-  #edit-profile {
-    bottom: 10px;
-  }
-  .l-cnt,
-  .m-cnt,
-  .r-cnt {
-    padding: 15px;
-  }
-  .l-mrg,
-  .m-mrg,
-  .r-mrg {
-    margin-top: 15px;
-  }
-}
 
 /* Media Query para dispositivos móviles con resolución de 320px */
 
@@ -1089,3 +1027,4 @@ header {
   opacity: 0.8;
   transform: scale(1.05);
 }
+
