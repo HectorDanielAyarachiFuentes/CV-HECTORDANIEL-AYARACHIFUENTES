@@ -1048,7 +1048,7 @@ header {
 
   /* Elementos ocultos en pantallas pequeñas */
 
-  #device-bar-1, #search-form, #p-tabs, #m-td, .material-icons  {
+  #device-bar-1, #search-form, #p-tabs, #m-td, #m-btns {
     display: none;
   }
 
