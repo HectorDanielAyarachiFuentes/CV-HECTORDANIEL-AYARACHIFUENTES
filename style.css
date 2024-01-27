@@ -969,27 +969,6 @@ header {
 
 /* Footer finished */
 
-
-
-/* Media Queries */
-
-
-
-
-
-@media (max-width: 320px) {
-
-
-
-  
-
-  .tb, .td {
-    /* Ajustes para tablas y celdas */
-    width: 100%;
-    display: block;
-}
-
-}
 /*-Efecto Hoover-----*/
 .on-ct a img {
   transition: transform 0.3s ease, opacity 0.3s ease;
@@ -999,4 +978,63 @@ header {
   opacity: 0.8;
   transform: scale(1.05);
 }
+/*-Efecto Hoover fin-----*/
+
+
+
+/* Media Queries */
+
+/* Media query for 320px screens */
+
+
+@media only screen and (max-width: 320px) {
+  main {
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+  }
+  
+  header {
+    width: 100%;
+    height: 60px;
+    background-color: #000000;
+  }
+  
+  profile-upper {
+    width: 100%;
+    height: 250px;
+  }
+  
+  main-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  l-col {
+    width: 25%;
+    padding: 20px;
+  }
+  
+  m-col {
+    width: 50%;
+    padding: 20px;
+  }
+  
+  r-col {
+    width: 25%;
+    padding: 20px;
+  }
+  
+  /* Ajustes para tablas y celdas */
+  
+  .tb, .td {
+    width: 100%;
+    display: block;
+  }
+  
+}
+
+/* General Structure */
 
