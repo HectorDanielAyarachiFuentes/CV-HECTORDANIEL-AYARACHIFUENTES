@@ -988,52 +988,98 @@ header {
 
 
 @media only screen and (max-width: 320px) {
+
+  /* General Structure */
+
   main {
     width: 100%;
     height: 100%;
     background-color: #ffffff;
   }
-  
+
   header {
     width: 100%;
     height: 60px;
-    background-color: #000000;
+    background-color: #3a5795;
   }
-  
+
   profile-upper {
     width: 100%;
     height: 250px;
   }
-  
+
   main-content {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
   }
-  
+
   l-col {
     width: 25%;
     padding: 20px;
   }
-  
+
   m-col {
     width: 50%;
     padding: 20px;
   }
-  
+
   r-col {
     width: 25%;
     padding: 20px;
   }
-  
+
   /* Ajustes para tablas y celdas */
-  
+
   .tb, .td {
     width: 100%;
     display: block;
   }
-  
+
+  /* Ajustes para el banner */
+
+  #profile-banner-image img {
+    width: 100%;
+    height: 120%;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* Elementos ocultos en pantallas pequeñas */
+
+  #device-bar-1, #search-form, #p-tabs, #m-td, .material-icons  {
+    display: none;
+  }
+
+  /* Ajustes para el nombre de usuario */
+
+  #u-name {
+    position: absolute;
+    top: -89%;
+    left: 2px; /* Revisar este valor, podría faltar una unidad de medida */
+    color: #ffffff;
+    font-size: 36px;
+    font-weight: bold;
+  }
+
+  /* Ajustes para el contenedor de la información del perfil */
+
+  .l-cnt {
+    padding: 80px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding-top: 6px;
+  }
+
+
+  #p-link {
+    position: absolute;
+    right: 10px;
+    top:70px;
+  }
+
+
 }
 
 /* General Structure */
