@@ -1042,6 +1042,19 @@ header {
     right: -10px; /* Corregido para ser coherente con left */
   }
 
+  #m-col.td{
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: -6px -3px -3px #dddddda5;
+    margin: 10px;
+    position: relative; /* Agregado para gestionar correctamente left y right */
+    left: -50px;
+    right: -10px; /* Corregido para ser coherente con left */
+  }
+
+
+
+
   #p-link {
     position: absolute;
     right: 10px;
