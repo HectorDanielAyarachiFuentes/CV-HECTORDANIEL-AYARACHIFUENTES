@@ -951,8 +951,8 @@ header {
   left: 0;
   right: 0; /* Reemplaza margin-left y margin-right para centrar */
   bottom: -177%; /* Posiciona desde abajo, en lugar de usar margin-top */
-  width: calc(100% - 10px); /* Ajusta el ancho considerando el padding */
-  padding: 9px 0 13px; /* Simplificado, sin especificar 0 a izquierda y derecha */
+  width: calc(99% - -10px); /* Ajusta el ancho considerando el padding */
+  padding: 6px 0 6px; /* Simplificado, sin especificar 0 a izquierda y derecha */
   background-color: black;
   border-radius: 10px; /* Añade bordes redondeados */
 
