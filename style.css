@@ -945,29 +945,7 @@ header {
 }
 /* Chat bar finished */
 
-/* Footer */
-#device-bar-2 {
-  position: absolute;
-  left: 0;
-  right: 0; /* Reemplaza margin-left y margin-right para centrar */
-  bottom: -177%; /* Posiciona desde abajo, en lugar de usar margin-top */
-  width: calc(99% - -10px); /* Ajusta el ancho considerando el padding */
-  padding: 6px 0 6px; /* Simplificado, sin especificar 0 a izquierda y derecha */
-  background-color: black;
-  border-radius: 10px; /* Añade bordes redondeados */
 
-}
-
-#device-bar-2 i {
-  display: block;
-  width: 40px;
-  color: #5e5d5d;
-  font-size: 40px;
-  text-align: center;
-  margin: 0 auto;
-}
-
-/* Footer finished */
 
 /*-Efecto Hoover-----*/
 .on-ct a img {
