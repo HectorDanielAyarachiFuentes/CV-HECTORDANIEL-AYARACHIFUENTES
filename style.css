@@ -1052,8 +1052,14 @@ header {
     right: -10px; /* Corregido para ser coherente con left */
   }
 
+  #t-box {
+    font-size: 10px;
+    color: #686868;
+    box-shadow: -6px -3px -3px #dddddda5;
 
-
+    line-height: 15px;
+    margin-top: 10px;
+  }
 
   #p-link {
     position: absolute;
