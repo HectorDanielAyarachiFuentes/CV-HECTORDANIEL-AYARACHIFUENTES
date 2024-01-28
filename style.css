@@ -1067,19 +1067,17 @@ header {
     top: 70px;
   }
 
-  .p-p-pic {
-    display: inline-block; /* Esto permite aplicar dimensiones al enlace */
-    width: 60px; /* Ancho del círculo */
-    height: 60px; /* Alto del círculo, igual al ancho para hacerlo circular */
-    border-radius: 50%; /* Hace que el contenedor sea un círculo */
-    overflow: hidden; /* Esconde cualquier parte de la imagen que exceda el círculo */
+
+
+  .p-p-pic  {
+    width: 50px;
+    border-radius: 50%;
+    overflow: hidden;
   }
   
   .p-p-pic img {
-    width: 100%; /* Hace que la imagen ocupe todo el ancho del contenedor */
-    height: auto; /* Mantiene la relación de aspecto de la imagen */
-    border-radius: 50%; /* Hace que la imagen también sea un círculo */
-    object-fit: cover; /* Asegura que la imagen cubra completamente el área del círculo */
+    display: block;
+    width: 100%;
   }
-  
+
 }
