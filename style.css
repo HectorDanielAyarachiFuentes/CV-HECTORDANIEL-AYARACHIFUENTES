@@ -1054,15 +1054,15 @@ header {
 }
 
 
-  #m-col.td{
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: -6px -3px -3px #dddddda5;
-    margin: 10px;
-    position: relative; /* Agregado para gestionar correctamente left y right */
-    left: -50px;
-    right: -10px; /* Corregido para ser coherente con left */
-  }
+#m-col{
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 3px 3px #dddddda5;
+  margin: 10px;
+  position: relative; /* Agregado para gestionar correctamente left y right */
+  left: -50px;
+  right: -10px; /* Corregido para ser coherente con left */
+}
 
   #t-box {
     font-size: 10px;
