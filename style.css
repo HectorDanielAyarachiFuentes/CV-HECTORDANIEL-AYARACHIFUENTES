@@ -1033,14 +1033,26 @@ header {
 
   /* Ajustes para el contenedor de la información del perfil */
   .l-cnt {
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: -6px -3px -3px #dddddda5;
-    margin: 10px;
-    position: relative; /* Agregado para gestionar correctamente left y right */
-    left: -50px;
-    right: -10px; /* Corregido para ser coherente con left */
-  }
+    padding: 20px;               /* Espaciado interno */
+    background-color: #fff;      
+    box-shadow: 0 0 3px 3px #dddddda5;
+    margin: 10px;                /* Margen alrededor del elemento */
+    position: relative;
+    left: -50px;                 /* Desplazamiento a la izquierda */
+    right: -10px;                /* Desplazamiento a la derecha */
+
+    /* Ajustes para el ancho */
+    width: auto;                 /* Ancho automático basado en el contenido */
+    max-width: 280px;            /* Max-width ajustado para tener en cuenta el padding y el margen */
+    box-sizing: border-box;      /* Asegura que padding y bordes estén incluidos en el ancho */
+}
+
+/* Opcional: Si quieres asegurarte de que todo el contenedor, incluyendo márgenes, no exceda los 320px */
+.l-cnt-container {
+    max-width: 320px;
+    overflow: hidden;            /* Oculta cualquier contenido que se salga */
+}
+
 
   #m-col.td{
     padding: 20px;
