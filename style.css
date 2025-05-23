@@ -1,33 +1,38 @@
 /* General Reset & Base Styles - Minor additions for responsiveness */
 * {
   outline: none;
-  box-sizing: border-box; /* Add this for easier width/padding management */
+  box-sizing: border-box;
 }
 
 html, body {
-  margin: 0; /* Reset body margin for full control */
+  margin: 0;
   padding: 0;
 }
 
 body {
-  padding: 40px 0px; /* Your original padding, can be adjusted for mobile */
+  padding: 40px 0px; /* Default padding, will be overridden for mobile */
   background-color: #385591;
-  font-family: Helvetica, Arial, sans-serif; /* Added fallback fonts */
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 body,
 input,
 button {
-  font-family: inherit; /* Inherit from body */
+  font-family: inherit;
 }
 
 img {
   display: block;
-  max-width: 100%; /* Make images responsive by default */
-  height: auto;    /* Maintain aspect ratio */
+  max-width: 100%;
+  height: auto;
   border: 0;
 }
 
+/*
+  Your HTML uses .tb, .tr, .td for layout.
+  We'll keep these display properties for elements where they make sense,
+  and override with flexbox for larger layout structures when needed for responsiveness.
+*/
 .tb {
   display: table;
   width: 100%;
@@ -50,21 +55,12 @@ button {
   padding: 0;
   border: 0;
   background-color: transparent;
-  cursor: pointer; /* Add cursor for better UX */
+  cursor: pointer;
 }
 
-::-moz-placeholder {
-  color: #f1f1f1;
-  opacity: 1; /* Firefox needs this */
-}
-
-:-ms-input-placeholder {
-  color: #f1f1f1;
-}
-
-::placeholder {
-  color: #f1f1f1;
-}
+::-moz-placeholder { color: #f1f1f1; opacity: 1; }
+:-ms-input-placeholder { color: #f1f1f1; }
+::placeholder { color: #f1f1f1; }
 
 /* Main Container */
 main {
@@ -83,57 +79,30 @@ main {
   background-color: #000;
   overflow: hidden;
 }
-
-#device-bar-1 button {
-  width: 15px;
-  height: 15px;
-  float: left;
-  margin: 6px;
-  border-radius: 50%;
-}
-
-#device-bar-1 button:first-child {
-  background-color: #f35d5b;
-}
-
-#device-bar-1 button:nth-child(2) {
-  background-color: #f6bd3a;
-}
-
-#device-bar-1 button:last-child {
-  background-color: #44cc45;
-}
+#device-bar-1 button { width: 15px; height: 15px; float: left; margin: 6px; border-radius: 50%; }
+#device-bar-1 button:first-child { background-color: #f35d5b; }
+#device-bar-1 button:nth-child(2) { background-color: #f6bd3a; }
+#device-bar-1 button:last-child { background-color: #44cc45; }
 
 /* Header */
 header {
   padding: 15px 20px;
   background-color: #4267b2;
-  display: flex; /* Using flexbox for easier alignment */
-  align-items: center;
 }
+/* The .tb inside header will handle alignment of its .td children */
+header > .tb > .td { vertical-align: middle; }
 
-#logo {
-  width: 30px;
-  flex-shrink: 0; /* Prevent logo from shrinking */
+
+#logo { width: 30px; } /* td property */
+#logo a { display: block; }
+#logo a i { font-size: 34px; color: #fff; } /* Ensure your fab fa--square is correct or change to a valid icon */
+
+#search-form { /* td property */
+  padding-left: 15px; /* Space from logo */
 }
-
-#logo a {
-  display: block;
-}
-
-#logo a i {
-  font-size: 34px;
-  color: #fff;
-}
-
-#search-form { /* Added a wrapper for better control if needed */
-  flex-grow: 1; /* Allow search to take available space if f-name-l is not there */
-  margin-left: 15px;
-}
-
 #search-form form {
   position: relative;
-  width: 280px; /* Max-width can be better for responsiveness */
+  width: 280px;
   max-width: 100%;
   font-size: 16px;
   padding: 8px 15px;
@@ -141,363 +110,138 @@ header {
   background-color: #3b5ca0;
   border-radius: 20px;
 }
+#search-form form input { width: 100%; color: #fff; border: 0; background-color: transparent; }
+#search-form form button { position: absolute; top: 50%; transform: translateY(-50%); right: 6px; color: #f1f1f1; height: 22px; line-height: 1; }
+#search-form form button i { font-size: 22px; }
 
-#search-form form input {
-  width: 100%;
-  color: #fff;
-  border: 0;
-  background-color: transparent;
-}
-
-#search-form form button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%); /* Better vertical centering */
-  right: 6px;
-  color: #f1f1f1;
-  height: 22px;
-  line-height: 1;
-}
-
-#search-form form button i {
-  font-size: 22px;
-}
-
-#f-name-l {
-  /* width: 1px; This makes it take minimal space, let's adjust */
+#f-name-l { /* td property */
+  width: auto; /* Let content define width */
   color: #fff;
   font-weight: bold;
   white-space: pre;
-  padding-left: 15px; /* Give some space from search */
-  padding-right: 20px;
-  flex-shrink: 0;
-}
-
-#f-name-l span {
-  padding-right: 28px;
-  border-right: 1px solid #35518b;
-}
-
-#i-links {
-  /* width: 1px; */ /* Let it take natural width */
-  display: flex; /* For aligning items */
-  align-items: center;
-  margin-left: auto; /* Push to the right */
-  flex-shrink: 0;
-}
-
-#m-td {
+  padding-left: 15px;
   padding-right: 20px;
 }
+#f-name-l span { padding-right: 28px; border-right: 1px solid #35518b; }
 
-#m-td span {
-  position: relative;
-  cursor: pointer;
-}
+#i-links { width: auto; } /* td property */
+#i-links > .tb > .td { vertical-align: middle; } /* For aligning items within i-links */
 
-#m-td span.m-active:before {
-  content: "5";
-  position: absolute;
-  top: -8px;
-  right: 0px;
-  color: #fff;
-  font-size: 12px;
-  padding: 4px 4px 3px 4px;
-  background-color: #ff1e0e;
-  border-radius: 3px;
-  line-height: 1;
-}
+#m-td { padding-right: 20px; } /* td child of #i-links > .tb */
+#m-td .td { padding: 0 5px; } /* individual icon cells */
+#m-td span { position: relative; cursor: pointer; }
+#m-td span i { color: #fff; font-size: 24px; vertical-align: middle; }
+#m-td span.m-active:before { content: "5"; position: absolute; top: -8px; right: -2px; color: #fff; font-size: 12px; padding: 4px; background-color: #ff1e0e; border-radius: 3px; line-height: 1; }
 
-#i-links .td { /* Assuming these .td are direct children for icons */
-  padding: 0 8px;
-}
-
-#i-links i {
-  color: #fff;
-  font-size: 24px;
-  vertical-align: middle;
-}
-
-#p-link {
-  display: block;
-  width: 34px;
-  height: 34px;
-  background-color: #f1f1f1;
-  border-radius: 50%;
-  overflow: hidden;
-  margin-left: 10px; /* Space from other icons */
-}
-
-#p-link img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+#p-link { display: block; width: 34px; height: 34px; background-color: #f1f1f1; border-radius: 50%; overflow: hidden; margin-left: 10px; }
+#p-link img { width: 100%; height: 100%; object-fit: cover; }
 
 /* Profile image header */
-#profile-upper {
-  position: relative;
-}
-
-#profile-banner-image {
-  height: 360px;
-  overflow: hidden;
-  z-index: 1;
-}
-
-#profile-banner-image img {
-  width: 100%;
-  height: 100%; /* Ensure it covers the area */
-  object-fit: cover; /* Prevents distortion, crops if necessary */
-  /* margin-top: -20%; Consider object-position if you need specific framing */
-}
+#profile-upper { position: relative; }
+#profile-banner-image { height: 360px; overflow: hidden; z-index: 1; }
+#profile-banner-image img { width: 100%; height: 100%; object-fit: cover; }
 
 #profile-d {
   position: absolute;
   left: 59px;
   bottom: 0px;
-  right: 0px; /* Or a specific width */
+  right: 59px; /* Give it a right boundary too */
   height: 180px;
   z-index: 2;
-  display: flex; /* For aligning pic and name container */
-  align-items: flex-end; /* Align items to bottom */
+  display: flex; /* Use flex for direct children */
+  align-items: flex-end; /* Align children to the bottom */
 }
 
 #profile-pic {
   width: 180px;
   height: 180px;
   border-radius: 3px;
-  /* margin-top: 28px; No longer needed if aligned to bottom of #profile-d */
   overflow: hidden;
   box-shadow: 0 0 0 5px #fff;
-  flex-shrink: 0;
+  flex-shrink: 0; /* Prevent shrinking */
 }
-
-#profile-pic img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-#u-name-container { /* Added a container for name and buttons for better layout */
-  position: relative; /* So #u-name can be absolute to this */
-  margin-left: 20px;
-  padding-bottom: 20px; /* Space for buttons to align with username better */
-  color: #fff;
-  flex-grow: 1;
-}
+#profile-pic img { width: 100%; height: 100%; object-fit: cover; }
 
 #u-name {
-  /* position: absolute; top: 120px; left: 208px; */ /* Now relative to #u-name-container */
+  color: #fff;
   font-size: 36px;
   font-weight: bold;
-  margin-bottom: 10px; /* Space before buttons */
+  margin-left: 20px;
+  margin-bottom: 50px; /* Space for buttons below */
+  flex-grow: 1; /* Allow to take space */
+  line-height: 1.2;
 }
 
-#m-btns {
-  /* position: absolute; right: 56px; bottom: 20px; width: 211px; */
-  /* Now flows naturally in #u-name-container or can be positioned if needed */
-  display: flex; /* Use flex for buttons */
+#m-btns { /* This is a .tb, will be positioned by #profile-d flex */
+  width: auto; /* Let content define width */
+  position: absolute; /* Position relative to #profile-d */
+  left: calc(180px + 20px + 20px); /* After pic + margin + its own margin */
+  bottom: 20px;
+  flex-shrink: 0;
 }
+#m-btns .td { padding: 0 4px; }
+#m-btns .td:first-child { padding-left: 0; }
+.m-btn { cursor: pointer; color: #0e0e0e; font-size: 14px; white-space: pre; padding: 5px 8px 6px 8px; background-color: rgba(255, 255, 255, 0.7); border-radius: 2px; display: flex; align-items: center; }
+.m-btn i { font-size: 16px; margin-right: 3px; }
 
-#m-btns .td { /* If .td is still used for button wrappers */
-  padding: 0 4px; /* Reduced padding for tighter fit */
-}
-#m-btns .td:first-child {padding-left: 0;}
+#edit-profile { position: absolute; right: 20px; bottom: 20px; line-height: 1; cursor: pointer; z-index: 3; }
+#edit-profile i { display: block; color: rgba(255, 255, 255, 0.7); font-size: 24px;}
 
-
-.m-btn {
-  cursor: pointer;
-  color: #0e0e0e;
-  font-size: 14px;
-  white-space: pre;
-  padding: 5px 8px 6px 8px;
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 2px;
-  display: flex; /* Align icon and text */
-  align-items: center;
-}
-
-.m-btn i {
-  font-size: 16px;
-  margin-right: 3px; /* Spacing */
-  vertical-align: middle; /* Keep for fallback */
-}
-
-.m-btn span {
-  /* position: relative; top: 1px; */ /* Flex alignment handles this */
-}
-
-#edit-profile {
-  position: absolute;
-  right: 20px;
-  bottom: 20px; /* Adjusted to align with overall bottom padding */
-  line-height: 1;
-  cursor: pointer;
-  z-index: 3; /* Ensure it's above gradient */
-}
-
-#edit-profile i {
-  display: block;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-#black-grd {
-  position: absolute;
-  left: 0px;
-  bottom: 0px;
-  right: 0px;
-  height: 300px;
-  background: linear-gradient(rgba(0, 0, 0, 0) 71%, rgba(0, 0, 0, 0.53));
-  z-index: 1;
-}
+#black-grd { position: absolute; left: 0px; bottom: 0px; right: 0px; height: 300px; background: linear-gradient(rgba(0, 0, 0, 0) 71%, rgba(0, 0, 0, 0.53)); z-index: 1; }
 
 /* Content area */
+/* #main-content > .tb is the main 3-column container */
 #main-content {
-  padding: 55px 0px 0px 55px;
-  display: flex; /* Use flexbox for columns */
+  padding: 55px 0 0 0; /* Remove left padding, handle by l-col/m-col */
+}
+#main-content > .tb {
+  display: flex; /* Override display:table for responsive columns */
+  padding-left: 55px; /* Original left padding */
 }
 
-#l-col,
-#m-col,
-#r-col {
-  vertical-align: top; /* Flex handles this, but good fallback */
+#l-col, #m-col, #r-col {
+  display: block; /* Override display:table-cell */
+  vertical-align: top; /* Flex handles this, but keep for fallback */
 }
 
-#l-col {
-  width: 340px;
-  padding-top: 6px; /* Original padding */
-  flex-shrink: 0; /* Prevent shrinking */
-}
+#l-col { width: 340px; padding-top: 6px; flex-shrink: 0; }
+#m-col { flex-grow: 1; padding: 0px 55px; }
+#r-col { width: 150px; flex-shrink: 0; position: relative; /* For chat-bar */ }
 
-#m-col {
-  flex-grow: 1; /* Takes remaining space */
-  padding: 0px 55px;
-}
-
-#r-col {
-  position: relative; /* For #chat-bar positioning */
-  width: 150px;
-  flex-shrink: 0; /* Prevent shrinking */
-}
+.l-cnt { padding: 20px; background-color: #fff; box-shadow: 0px 3px 3px #ddd; margin-bottom: 28px; }
+.l-cnt:last-child { margin-bottom: 0; }
+.l-mrg { /* This class is used in HTML, ensure it has effect or merge with .l-cnt margin */ margin-top: 28px; }
 
 
-.l-cnt {
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0px 3px 3px #ddd;
-  margin-bottom: 28px; /* Consistent margin, replacing l-mrg */
-}
-.l-cnt:last-child {
-  margin-bottom: 0;
-}
+.cnt-label { position: relative; padding-right: 24px; margin-bottom: 15px; display: flex; align-items: center; }
+.l-i { display: inline-block; width: 24px; height: 24px; margin-right: 8px; background-size: auto; background-repeat: no-repeat; vertical-align: middle; }
+#l-i-i { background-image: url("Imagenes/C8tmwX.png"); background-position: 0 -87px; } /* Assuming image is in Imagenes folder */
+#l-i-p { background-image: url("Imagenes/sRapnM.png"); background-position: 0 0; }
+#l-i-k { background-image: url("Imagenes/QpPVKn.png"); }
+.cnt-label span { color: #707070; font-size: 18px; }
+.lb-action { position: absolute; top: 50%; transform: translateY(-50%); right: 0px; cursor: pointer; }
+.lb-action i { display: block; color: #ccc; font-size: 18px; }
+#b-i i { font-size: 24px; }
 
-.l-i {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  margin-right: 2px;
-  background-size: auto;
-  background-repeat: no-repeat;
-  vertical-align: middle;
-}
+#i-box { color: #797979; font-size: 14px; line-height: 1.3; }
+#intro-line { margin-top: 17px; }
+#u-occ { margin: 10px 0px; }
+#u-occ a { color: #2196f3; }
+#u-loc { display: flex; align-items: center; }
+#u-loc i { color: #2196f3; font-size: 16px; margin-right: 2px; }
+#u-loc a { color: #2196f3; }
 
-#l-i-i {
-  background-image: url("https://imagizer.imageshack.com/img922/7749/C8tmwX.png");
-  background-position: 0 -87px;
-}
-
-#l-i-p {
-  background-image: url("https://imagizer.imageshack.com/img923/7847/sRapnM.png");
-  background-position: 0 0;
-}
-
-#l-i-k {
-  background-image: url("https://imagizer.imageshack.com/img922/5617/QpPVKn.png");
-}
-
-.cnt-label {
-  position: relative;
-  padding-right: 24px;
-  margin-bottom: 15px;
-  display: flex; /* Align icon and text better */
-  align-items: center;
-}
-
-.cnt-label span {
-  /* position: relative; top: 2px; */ /* Flex alignment helps */
-  color: #707070;
-  font-size: 18px;
-  margin-left: 8px; /* Space after icon if l-i is used here */
-}
-
-.lb-action {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%); /* Better vertical centering */
-  right: 0px;
-  cursor: pointer;
-}
-
-.lb-action i {
-  display: block;
-  color: #ccc;
-  font-size: 18px;
-}
-
-#b-i i { /* Assuming #b-i is a class or id for a specific icon */
-  font-size: 24px;
-}
-
-#i-box {
-  color: #797979;
-  font-size: 14px;
-  line-height: 1.3;
-}
-
-#intro-line {
-  margin-top: 17px;
-}
-
-#u-occ {
-  margin: 10px 0px;
-}
-
-#u-occ a {
-  color: #2196f3;
-}
-
-#u-loc i {
-  color: #2196f3;
-  font-size: 16px;
-  margin-left: -3px;
-  margin-right: 2px;
-  margin-top: -1px;
-  vertical-align: middle;
-}
-
-#u-loc a {
-  position: relative;
-  top: 1px;
-  color: #2196f3;
-}
-
-#photos {
-  padding: 2px;
-  margin: 15px -20px -20px -20px; /* Negative margins to break out of .l-cnt padding */
-}
-
-#photos .td {
+#photos { padding: 2px; margin: 15px -20px -20px -20px; }
+#photos .tb .tr .td { /* Targeting the actual image cells */
   width: 33.333%;
   height: 112px;
   border: 2px solid #fff;
-  /* box-sizing: border-box; Already global */
   background-color: #f1f1f1;
-  background-position: 50% 25%;
+  background-position: center; /* Use center for general cases */
   background-size: cover;
 }
 
-/* Photo URLs - KEPT AS IS */
+/* Photo URLs - USE FORWARD SLASHES */
 #photos .tb .tr:nth-child(1) .td:nth-child(1) { background-image: url("Imagenes/Ramon.jpg");}
 #photos .tb .tr:nth-child(1) .td:nth-child(2) { background-image: url("Imagenes/Perropianista.jpg");}
 #photos .tb .tr:nth-child(1) .td:nth-child(3) { background-image: url("Imagenes/MollyHermosa.jpg");}
@@ -508,717 +252,233 @@ header {
 #photos .tb .tr:nth-child(3) .td:nth-child(2) { background-image: url("Imagenes/Dulcehermosa1.jpg");}
 #photos .tb .tr:nth-child(3) .td:nth-child(3) { background-image: url("Imagenes/Dulcehermosa.jpg");}
 
+#k-nm { color: #b8b8b8; font-size: 15px; font-style: normal; margin-left: 8px; cursor: pointer; }
+.q-ad-c { padding: 2px; margin-bottom: 5px; }
+.q-ad { display: block; padding: 8px; border: 1px solid #eeeeee; background-color: #fafafa; border-radius: 4px; display: flex; align-items: center;}
+.q-ad img { width: 24px; height: 24px; margin-right: 8px; vertical-align: middle; } /* Adjusted from inline */
+.q-ad span { color: #242424; font-size: 14px; }
+#add_q { color: #858585; background-color: #fff; border-color: #f1f1f1; }
+#add_q i { font-size: 17px; margin-right: 5px; vertical-align: middle; }
+#add_q span { color: #858585; font-size: 12.4px; }
 
-#k-nm {
-  color: #b8b8b8;
-  font-size: 15px;
-  font-style: normal;
-  margin-left: 8px;
-  cursor: pointer;
-}
-
-.q-ad-c {
-  padding: 2px;
-}
-
-.q-ad {
-  display: block;
-  padding: 8px;
-  border: 1px solid #eeeeee;
-  background-color: #fafafa;
-  border-radius: 4px;
-}
-
-.q-ad img { /* This was inline, making sure it behaves with flex */
-  display: inline-block; /* Or ensure parent is flex */
-  width: 24px;
-  height: 24px;
-  margin-right: 5px;
-  vertical-align: middle;
-}
-
-.q-ad span {
-  position: relative;
-  top: 1px;
-  color: #242424;
-  font-size: 14px;
-  text-align: center;
-}
-
-#add_q {
-  color: #858585;
-  text-align: center;
-  margin-top: 10px;
-  background-color: #fff;
-  border-color: #f1f1f1;
-}
-
-#add_q i {
-  font-size: 17px;
-  margin-right: -3px;
-  vertical-align: middle;
-}
-
-#add_q span {
-  color: #858585;
-  font-size: 12.4px;
-  position: relative;
-  top: -1px;
-}
-
-#t-box {
-  font-size: 14px;
-  color: #686868;
-  padding-top: 24px;
-  line-height: 18px;
-}
-
-#t-box a {
-  margin-right: 5px;
-}
-
-#t-box a,
-#t-more {
-  color: #999;
-}
-
-#t-more {
-  cursor: pointer;
-}
-
-#t-more i {
-  font-size: 15px;
-  vertical-align: middle;
-}
-
-#cpy-nt {
-  margin-top: 4px;
-}
+#t-box { font-size: 14px; color: #686868; padding-top: 24px; line-height: 18px; }
+#t-box a { margin-right: 5px; }
+#t-box a, #t-more { color: #999; }
+#t-more { cursor: pointer; display: inline-flex; align-items: center;}
+#t-more i { font-size: 15px; vertical-align: middle; }
+#cpy-nt { margin-top: 4px; }
 
 /* Mid Column Specifics */
-.m-mrg { /* Generic margin bottom for mid col elements */
-  margin-bottom: 28px;
-}
+.m-mrg { margin-bottom: 28px; }
 
 #p-tabs {
-  position: relative;
-  font-size: 13px;
-  color: #919191;
-  text-align: center;
-  padding: 13px 20px;
-  margin-top: -64px; /* Pulls it up over the banner */
-  background-color: #fff;
-  box-shadow: 0px 3px 3px #ddd;
-  z-index: 3; /* Above banner elements */
+  position: relative; font-size: 13px; color: #919191; text-align: center;
+  padding: 13px 20px; margin-top: -64px; background-color: #fff;
+  box-shadow: 0px 3px 3px #ddd; z-index: 3;
 }
-
+#p-tabs > .tb > .td { vertical-align: middle; } /* Align children */
+/* #p-tabs-m is a .tb, make its .td children flex for better control */
+#p-tabs-m { display: flex; justify-content: space-around; }
 #p-tabs-m .td {
-  width: 16.6666667%;
-  cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; /* Stack icon and text */
+  cursor: pointer; padding: 0 5px; /* Spacing for tabs */
+  flex: 1; /* Distribute space - or use width: auto; if you prefer natural width */
 }
+#p-tabs-m .td.active { color: #ee6000; }
+#p-tabs-m .td span { position: relative; margin-top: 5px; /* Space from icon */ }
+#p-tabs-m .td.active span:after { content: ""; position: absolute; left: 0px; right: 0px; bottom: -13px; height: 4px; background-color: #ee6000; }
+#p-tabs-m .td i { font-size: 24px; /* No margin-bottom needed due to flex-direction */ }
 
-#p-tabs-m .td.active {
-  color: #ee6000;
-}
+#p-tab-m { width: auto; color: #ccc; cursor: pointer; padding-left: 10px;} /* More tab */
+#p-tab-m i { font-size: 24px; }
 
-#p-tabs-m span {
-  position: relative;
-}
-
-#p-tabs-m .td.active span:after {
-  content: "";
-  position: absolute;
-  left: 0px;
-  right: 0px;
-  bottom: -13px;
-  height: 4px;
-  background-color: #ee6000;
-}
-
-#p-tabs-m .td i {
-  display: block;
-  font-size: 24px;
-  margin-bottom: 5px;
-}
-
-#p-tab-m { /* "More" tab? */
-  width: 1px; /* Makes it very narrow */
-  color: #ccc;
-  cursor: pointer;
-}
-
-#p-tab-m i {
-  margin-right: -4px;
-}
-
-#composer {
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0px 3px 3px #ddd;
-}
-
-#c-tabs-cvr {
-  padding-bottom: 12px;
-  border-bottom: 1px solid #ececec;
-}
-
-#c-tabs {
-  width: auto; /* Fine */
-  color: #919191;
-  /* display: flex; If .tb isn't working as expected */
-}
-
+#composer { padding: 20px; background-color: #fff; box-shadow: 0px 3px 3px #ddd; }
+#c-tabs-cvr { padding-bottom: 12px; border-bottom: 1px solid #ececec; }
+/* #c-tabs is a .tb, make its .td children flex */
+#c-tabs { display: flex; justify-content: flex-start; color: #919191; }
 #c-tabs .td {
-  position: relative;
-  /* width: 1px; Let content define width */
-  padding: 0px 15px;
-  white-space: pre;
-  cursor: pointer;
+  display: flex; align-items: center; /* Align icon and text */
+  position: relative; padding: 0px 15px; white-space: pre; cursor: pointer;
 }
+#c-tabs .td:after { content: ""; position: absolute; top: 50%; right: 0px; width: 1px; height: 12px; margin-top: -6px; background-color: #eaeaea; }
+#c-tabs .td:first-child { padding-left: 0px; }
+#c-tabs .td:last-child { padding-right: 0; }
+#c-tabs .td:last-child:after { display: none; }
+#c-tabs .td.active { color: #373737; }
+#c-tabs .td.active span:after { content: ""; position: absolute; left: 50%; transform: translateX(-50%) rotateZ(45deg); bottom: -20px; width: 10px; height: 10px; border: 1px solid transparent; border-color: transparent #ececec #ececec transparent; background-color: #fff; }
+#c-tabs .td i { font-size: 21px; margin-right: 4px; }
+#c-tabs .td span { font-size: 15px; }
 
-#c-tabs .td:after { /* Divider line */
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 0px;
-  width: 1px;
-  height: 12px;
-  margin-top: -6px;
-  background-color: #eaeaea;
-}
-
-#c-tabs .td:first-child {
-  padding-left: 0px;
-}
-
-#c-tabs .td:last-child {
-  padding-right: 0;
-}
-
-#c-tabs .td:last-child:after {
-  display: none;
-}
-
-#c-tabs .td span {
-  position: relative;
-}
-
-#c-tabs .td.active {
-  color: #373737;
-}
-
-#c-tabs .td.active span:after { /* Active tab indicator triangle */
-  content: "";
-  position: absolute;
-  left: 0px;
-  right: 0px;
-  bottom: -20px; /* Adjust based on #c-tabs-cvr padding */
-  width: 10px;
-  height: 10px;
-  border: 1px solid transparent;
-  border-color: transparent #ececec #ececec transparent;
-  margin: 0 auto;
-  background-color: #fff;
-  transform: rotateZ(45deg);
-}
-
-#c-tabs .td i {
-  font-size: 21px;
-  margin-right: 4px;
-  vertical-align: middle;
-}
-
-#c-tabs .td span {
-  position: relative;
-  top: 1px;
-  font-size: 15px;
-}
-
-#c-c-main {
-  position: relative;
-  padding-top: 15px;
-  display: flex; /* Align profile pic and input */
-  align-items: center;
-}
-
-#p-c-i { /* Profile pic in composer */
-  width: 50px;
-  height: 50px; /* Explicit height */
-  border-radius: 50%;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-#p-c-i img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-#c-inp {
-  padding-left: 20px;
-  flex-grow: 1; /* Input takes remaining space */
-}
-
-#c-inp input {
-  width: 100%;
-  font-size: 20px;
-  border: 0;
-  padding: 0;
-  margin: 0;
-  background-color: transparent; /* Ensure no bg from user agent */
-}
-
+#c-c-main { position: relative; padding-top: 15px; }
+#c-c-main > .tb > .td { vertical-align: top; } /* Align composer pic and input */
+#p-c-i { width: 50px; height: 50px; border-radius: 50%; overflow: hidden; }
+#p-c-i img { width: 100%; height: 100%; object-fit: cover; }
+#c-inp { padding-left: 20px; }
+#c-inp input { width: 100%; font-size: 20px; border: 0; padding: 10px 0; margin: 0; background-color: transparent; }
 #c-c-main input::-moz-placeholder { color: #666; opacity: 1;}
 #c-c-main input:-ms-input-placeholder { color: #666; }
 #c-c-main input::placeholder { color: #666; }
-
-#insert_emoji {
-  position: absolute;
-  right: -2px;
-  bottom: -2px; /* Adjusted for better alignment with input field line */
-  cursor: pointer;
-}
-
-#insert_emoji i {
-  display: block;
-  color: #ccced6;
-  font-size: 21px;
-}
+#insert_emoji { position: absolute; right: 0px; bottom: 8px; cursor: pointer; } /* Adjusted bottom */
+#insert_emoji i { display: block; color: #ccced6; font-size: 21px; }
 
 /* Post Styling */
-.post {
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0px 3px 3px #ddd;
-}
+.post { padding: 20px; background-color: #fff; box-shadow: 0px 3px 3px #ddd; margin-bottom: 20px; }
+.post > .tb { margin-bottom: 15px; } /* Post header table */
+.post > .tb > .td { vertical-align: top; }
 
-.post .tb { /* Assuming .tb is used for post header */
-  margin-bottom: 15px; /* Space before content/image */
-}
+.p-p-pic { width: 50px; height: 50px; border-radius: 50%; overflow: hidden; }
+.p-p-pic img { width: 100%; height: 100%; object-fit: cover; }
+.p-r-hdr { padding-left: 15px; } /* Space next to profile pic */
+.p-u-info { color: #5a5959; font-size: 15px; margin-bottom: 7px; line-height: 1.3; }
+.p-u-info a { color: #4267b2; font-weight: bold; }
+.p-dt { color: #a8a8a8; font-size: 13px; display: flex; align-items: center; }
+.p-dt i { font-size: 14px; margin-right: 4px; }
+.p-opt { width: auto; text-align: right; color: #ccc; cursor: pointer; }
 
-.p-p-pic { /* Post author pic */
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  overflow: hidden;
-}
+.p-cnt-v { display: block; margin: 20px -20px; cursor: pointer; }
+.p-cnt-v img { width: 100%; height: auto; }
+.p-text-content { margin: 15px 0; line-height: 1.5; }
 
-.p-p-pic img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+.p-acts { display: flex; justify-content: flex-start; align-items: center; padding-top: 10px; border-top: 1px solid #f0f0f0; margin-top: 15px;}
+.p-act { color: #a3a6aa; cursor: pointer; display: flex; align-items: center; margin-right: 25px; }
+.p-act i { font-size: 18px; margin-right: 6px; }
+.p-act span { font-size: 15px; color: #a3a6aa; }
+.share { margin-left: auto; /* Pushes share to the right */ transform: rotateY(180deg); /* If icon needs flipping */ }
 
-.p-r-hdr { /* Post right header (name, date) */
-  vertical-align: top;
-  padding-left: 20px;
-}
+#loading { text-align: center; padding: 40px 0px; }
+#loading i { color: #4267b2; font-size: 32px; display: block; animation: spin 1s linear infinite; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-.p-u-info {
-  color: #5a5959;
-  font-size: 15px;
-  margin-bottom: 7px;
-}
-
-.p-u-info a {
-  color: #4267b2;
-  font-weight: bold;
-}
-
-.p-dt { /* Post date/time */
-  color: #a8a8a8;
-  font-size: 13px;
-}
-
-.p-dt i {
-  font-size: 14px;
-  margin-right: 2px;
-}
-
-.p-dt span {
-  position: relative;
-  top: -2px;
-}
-
-.p-opt { /* Post options dropdown */
-  position: relative;
-  right: -3px; /* Slight adjustment */
-  width: auto; /* Let content define width */
-  color: #ccc;
-  cursor: pointer;
-  vertical-align: top;
-}
-
-.p-cnt-v { /* Post content / visual (image/video) */
-  display: block;
-  margin: 20px -20px; /* Negative margin to make it full-bleed within post padding */
-  cursor: pointer;
-}
-.p-cnt-v img { /* Ensure image within this is responsive */
-    width: 100%;
-    height: auto;
-}
-
-.p-text-content { /* Add a class for text posts if any */
-  margin: 15px 0;
-  line-height: 1.5;
-}
-
-
-.p-acts { /* Post actions (like, comment, share) */
-  overflow: hidden; /* Contains floats */
-  display: flex; /* Modern way to align */
-  justify-content: space-between; /* Distribute space */
-  align-items: center;
-}
-
-.p-act {
-  /* width: 24px; height: 24px; No fixed width/height, let content define */
-  color: #a3a6aa;
-  cursor: pointer;
-  display: flex; /* Align icon and text */
-  align-items: center;
-}
-
-.p-act span {
-  /* position: relative; top: 1px; Not needed with flex */
-  /* width: 20px; */ /* Let it be natural */
-  font-size: 15px;
-  color: #a3a6aa;
-  margin-left: 6px; /* Space after icon */
-}
-
-.like, .comment {
-  /* width: 50px; float: left; No longer needed */
-  /* margin-right: 36px for .like only if not using flex justify */
-}
-.like { margin-right: 15px;} /* If grouped on left */
-
-.p-act i {
-  vertical-align: middle; /* Fallback */
-  font-size: 18px; /* Consistent icon size */
-}
-
-/* .like i, .comment i { margin-right: 6px; Handled by .p-act span margin-left } */
-
-.share {
-  /* float: right; transform: rotateY(180deg); margin-right: -1px; */
-  /* No float needed with flex */
-  /* transform: rotateY(180deg); This is for a specific icon, keep if needed */
-}
-.actions-left { display: flex; } /* Group like and comment */
-
-
-#loading {
-  text-align: center;
-  padding: 40px 0px;
-}
-
-#loading i {
-  color: #4267b2;
-  font-size: 32px;
-  display: block;
-}
 
 /* Chat bar */
-#chat-bar {
-  position: sticky; /* Make chat bar sticky if desired within r-col */
-  top: 55px; /* Adjust based on header height or desired offset */
-  /* Or keep absolute if #r-col has fixed height and overflow */
-  /* position: absolute; top: -55px; right: 55px; bottom: 0px; left: 0px; */
-  padding-top: 20px; /* Space from top of r-col */
-}
-
-#chat-lb {
-  color: #3a5795;
-  font-size: 16px;
-  text-align: center;
-  margin: 23px 0px;
-}
-
-#chat-lb i {
-  font-size: 18px;
-  margin-right: 4px;
-  vertical-align: middle;
-}
-
-#chat-lb span {
-  position: relative;
-  top: 2px;
-}
-
-#cts .on-ct { /* Online contacts */
-  position: relative;
-  width: 50px;
-  height: 50px;
-  margin: 0 auto 28px auto; /* Centered with bottom margin */
-}
-
-#cts .on-ct:first-child {
-  margin-top: 0px;
-}
-
-.on-ct img {
-  border-radius: 50%;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-.on-ct a:hover img { /* Hover effect directly on img if 'a' wraps it */
-  opacity: 0.8;
-  transform: scale(1.05);
-}
+#chat-bar { position: sticky; top: 20px; /* Sticky within r-col */ padding-top: 0; /* Remove -55px if sticky */ }
+#chat-lb { color: #3a5795; font-size: 16px; text-align: center; margin: 23px 0px; display: flex; align-items: center; justify-content: center;}
+#chat-lb i { font-size: 18px; margin-right: 4px; }
+/* Corrected #cts structure based on assumption */
+#cts .on-ct { position: relative; width: 50px; height: 50px; margin: 0 auto 20px auto; }
+#cts .on-ct:first-child { margin-top: 0px; }
+#cts .on-ct img { border-radius: 50%; width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease, opacity 0.3s ease; }
+#cts .on-ct a:hover img { opacity: 0.8; transform: scale(1.05); }
+#cts .on-ct.active:after { content: ""; position: absolute; top: 3px; right: 2px; width: 10px; height: 10px; background-color: #2ecd18; border-radius: 50%; box-shadow: 0px 0px 0px 3px #e9ebee; z-index: 1; }
+#ct-sett { text-align: center; margin-top: 30px; } /* Reduced margin */
+#ct-sett i { color: #3a5795; padding: 13px; background-color: #d8e4ff; border-radius: 50%; cursor: pointer; font-size: 20px;}
 
 
-.on-ct.active:after { /* Online status indicator */
-  content: "";
-  position: absolute;
-  top: 3px;
-  right: 2px;
-  width: 10px;
-  height: 10px;
-  background-color: #2ecd18;
-  border-radius: 50%;
-  box-shadow: 0px 0px 0px 3px #e9ebee; /* e9ebee is main bg */
-  z-index: 1;
-}
-
-#ct-sett { /* Chat settings */
-  text-align: center; /* Center the icon button */
-  margin-top: 55px;
-}
-
-#ct-sett i {
-  color: #3a5795;
-  padding: 13px;
-  background-color: #d8e4ff;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-
-/* Media Queries */
+/* --- Media Queries --- */
 
 /* Tablets (e.g., 768px to 1024px) */
 @media screen and (max-width: 1024px) {
   main {
     width: 95%;
   }
+  #main-content > .tb { padding-left: 20px; } /* Adjust main content padding */
+  #l-col { width: 280px; }
+  #m-col { padding: 0 20px; }
+  #r-col { display: none; }
 
-  #main-content {
-    padding: 30px 20px 0px 20px;
-  }
+  #profile-d { left: 30px; right: 30px; height: 150px; }
+  #profile-pic { width: 140px; height: 140px; }
+  #u-name { font-size: 28px; margin-bottom: 30px; margin-left: 15px; }
+  #m-btns { left: calc(140px + 15px + 15px); bottom: 15px; }
+  .m-btn { font-size: 13px; padding: 4px 7px; }
+  .m-btn i { font-size: 15px; }
 
-  #l-col {
-    width: 280px; /* Slightly narrower for more m-col space */
-  }
-  #m-col {
-    padding: 0 20px;
-  }
-
-  #r-col {
-    display: none; /* Hide chat on tablets */
-  }
-
-  #profile-d {
-    height: 150px;
-    left: 30px; /* Adjust left positioning */
-    right: 30px; /* Add right to constrain */
-  }
-
-  #profile-pic {
-    width: 140px;
-    height: 140px;
-  }
-  #u-name-container {
-    padding-bottom: 10px; /* Adjust spacing */
-  }
-  #u-name {
-    font-size: 28px;
-    /* Removed absolute positioning, relies on flex in #profile-d */
-  }
-  #m-btns { /* Ensure buttons are visible and spaced */
-    /* Adjust if they wrap or overflow */
-  }
-
-  #photos .td {
-    height: 90px;
-  }
+  #photos .tb .tr .td { height: 90px; }
   
-  #f-name-l { display: none; } /* Hide name in header for more space */
-  #search-form { margin-left: 10px; }
+  #f-name-l { display: none; }
+  #search-form { padding-left: 10px; }
   #search-form form { width: 220px; }
+  header .td#i-links { padding-left: auto; } /* Push icons to right */
 }
 
 
-/* Mobile Devices (up to 767px) - This will be the main mobile breakpoint */
+/* Mobile Devices (up to 767px) */
 @media screen and (max-width: 767px) {
-  body {
-    padding: 0; /* Remove body padding for mobile full bleed */
-  }
-  main {
-    width: 100%;
-    margin: 0;
-    border-radius: 0;
-    box-shadow: none;
-  }
+  body { padding: 0; }
+  main { width: 100%; margin: 0; border-radius: 0; box-shadow: none; }
 
-  header {
-    padding: 10px;
-    position: sticky; /* Optional: make header sticky */
-    top: 0;
-    z-index: 100;
-  }
+  header { padding: 10px; position: sticky; top: 0; z-index: 1000; }
+  header > .tb { display: flex; align-items: center; } /* Override table for flex control */
+  #logo { flex-shrink: 0;}
   #logo a i { font-size: 28px; }
-
-  #search-form { flex-grow: 1; margin-left: 10px; }
-  #search-form form {
-    width: 100%; /* Full width available */
-    padding: 6px 10px;
-    padding-right: 30px;
-  }
+  #search-form { flex-grow: 1; padding-left: 10px; }
+  #search-form form { width: 100%; padding: 6px 10px; padding-right: 30px; }
   #search-form form input { font-size: 14px; }
-  #search-form form button { height: 20px; }
   #search-form form button i { font-size: 18px; }
-  
-  #f-name-l, #m-td, #i-links .td:not(#p-link) /* Hide name, message icons etc, keep profile link */ {
+  #f-name-l, #m-td, header .td#i-links > .tb > .td:not(:last-child) /* Hide all icon links except profile */ {
     display: none;
   }
-  #i-links { margin-left: 10px; } /* Space before profile icon */
-  #p-link { width: 30px; height: 30px;}
+  #i-links { margin-left: auto; /* Push profile link to right */ width: auto;}
+  #i-links > .tb { width: auto; } /* Ensure table inside doesn't force full width */
+  #p-link { width: 30px; height: 30px; margin-left: 0;}
 
-
-  #profile-banner-image {
-    height: 200px; /* Reduced banner height */
-  }
+  #profile-banner-image { height: 200px; }
   #profile-d {
-    left: 15px; /* Closer to edge */
-    right: 15px;
-    height: auto; /* Auto height based on content */
-    flex-direction: column; /* Stack pic and name vertically */
-    align-items: flex-start; /* Align to start */
-    bottom: 10px; /* Space from bottom of banner */
+    left: 15px; right: 15px; height: auto;
+    flex-direction: column; align-items: flex-start;
+    bottom: 10px;
   }
-  #profile-pic {
-    width: 80px;
-    height: 80px;
-    box-shadow: 0 0 0 3px #fff;
-    margin-bottom: 10px; /* Space between pic and name */
-  }
-  #u-name-container {
-    margin-left: 0;
-    padding-bottom: 0;
-    width: 100%; /* Take full width */
-  }
-  #u-name {
-    font-size: 22px;
-    color: #fff; /* Ensure contrast if banner is dark */
-    margin-bottom: 5px;
-    /* position: static; top: auto; left: auto; Already handled by flex */
-  }
+  #profile-pic { width: 80px; height: 80px; box-shadow: 0 0 0 3px #fff; margin-bottom: 10px; }
+  #u-name { font-size: 22px; margin-left: 0; margin-bottom: 10px; }
   #m-btns {
-    flex-wrap: wrap; /* Allow buttons to wrap */
+    position: static; /* No longer absolute */
+    width: 100%; /* Take full width */
+    display: flex; /* Use flex for buttons */
+    flex-wrap: wrap;
   }
-  #m-btns .td {
-    padding: 0;
-    margin-right: 5px;
-    margin-bottom: 5px;
+  #m-btns .td { padding: 0; margin-right: 5px; margin-bottom: 5px; }
+  .m-btn { font-size: 12px; padding: 4px 6px; }
+  #edit-profile { display: none; }
+
+  #main-content > .tb {
+    padding-left: 0; /* Remove padding, handled by children */
+    flex-direction: column;
   }
-  .m-btn {
-    font-size: 12px;
-    padding: 4px 6px;
-  }
-  .m-btn i { font-size: 14px; }
-  #edit-profile { display: none; } /* Often hidden on mobile, or redesigned */
+  #l-col, #m-col { width: 100%; padding: 0 15px; /* Add horizontal padding */ }
+  #l-col { order: 2; margin-top: 15px; }
+  #m-col { order: 1; padding-bottom: 15px; } /* Add bottom padding */
 
-
-  #main-content {
-    padding: 15px; /* Consistent padding */
-    flex-direction: column; /* Stack columns */
-  }
-
-  #l-col, #m-col {
-    width: 100%;
-    padding: 0; /* Remove padding, children will handle it */
-  }
-  #l-col { order: 2; margin-top: 15px; } /* Example: Show posts before info on mobile */
-  #m-col { order: 1; }
-
-
-  /* Profile Tabs Adjustments */
   #p-tabs {
-    margin-top: 15px; /* No longer overlapping banner */
-    padding: 10px 5px; /* Reduced padding */
+    margin-top: 15px; padding: 10px 0; /* Remove horizontal padding, tabs handle it */
     box-shadow: 0 1px 2px #ddd;
-    overflow-x: auto; /* Allow horizontal scroll if tabs don't fit */
-    white-space: nowrap; /* Keep tabs in one line */
+    overflow-x: auto; white-space: nowrap;
   }
-  #p-tabs-m { display: flex; } /* Use flex for tabs inside */
-  #p-tabs-m .td {
-    width: auto; /* Auto width based on content */
-    padding: 0 10px; /* Spacing between tabs */
-    font-size: 12px;
-  }
-  #p-tabs-m .td i {
-    font-size: 20px;
-    margin-bottom: 3px;
-  }
-  #p-tabs-m .td.active span:after {
-    bottom: -10px; /* Adjust underline position */
-  }
-  #p-tab-m { display: none; } /* Hide "more" tab if not scrollable */
+  #p-tabs > .tb { width: auto; /* Allow scrolling */ }
+  #p-tabs-m { justify-content: flex-start; /* Align tabs to start for scrolling */ }
+  #p-tabs-m .td { font-size: 12px; padding: 0 12px; flex: 0 0 auto; /* Prevent flex grow/shrink */ }
+  #p-tabs-m .td i { font-size: 20px; }
+  #p-tabs-m .td.active span:after { bottom: -10px; }
+  #p-tab-m { display: none; }
 
-
-  /* Content Sections in l-col */
-  .l-cnt {
-    padding: 15px;
-    margin-bottom: 15px;
-  }
+  .l-cnt { padding: 15px; margin-bottom: 15px; }
   .cnt-label span { font-size: 16px; }
   #i-box { font-size: 13px; }
-  #photos { margin: 15px -15px -15px -15px; } /* Adjust negative margins to l-cnt padding */
-  #photos .td { height: 100px; /* Adjust photo height */ }
+  #photos { margin: 15px -15px -15px -15px; }
+  #photos .tb .tr .td { height: 100px; }
 
-
-  /* Composer Adjustments */
-  #composer {
-    padding: 15px;
-  }
-  #c-tabs .td {
-    padding: 0px 10px;
-  }
-  #c-tabs .td span {
-    font-size: 13px;
-  }
+  #composer { padding: 15px; }
+  #c-tabs { flex-wrap: wrap; /* Allow composer tabs to wrap */ }
+  #c-tabs .td { padding: 5px 10px; font-size: 13px; }
   #c-tabs .td i { font-size: 18px; }
-  #c-tabs .td.active span:after { bottom: -16px; } /* Adjust for c-tabs-cvr padding */
+  #c-tabs .td.active span:after { bottom: -12px; } /* Adjust for padding */
   #p-c-i { width: 40px; height: 40px; }
   #c-inp { padding-left: 10px; }
-  #c-inp input { font-size: 16px; }
+  #c-inp input { font-size: 16px; padding: 8px 0; }
+  #insert_emoji { bottom: 6px; }
 
-
-  /* Post Adjustments */
-  .post {
-    padding: 15px;
-  }
+  .post { padding: 15px; }
   .p-p-pic { width: 40px; height: 40px; }
   .p-r-hdr { padding-left: 10px; }
   .p-u-info { font-size: 14px; }
   .p-dt { font-size: 12px; }
-  .p-cnt-v { margin: 15px -15px; } /* Adjust negative margins to post padding */
-  .p-act span { font-size: 13px; }
+  .p-cnt-v { margin: 15px -15px; }
   .p-act i { font-size: 16px; }
+  .p-act span { font-size: 13px; }
 
-  #t-box {
-    font-size: 12px;
-    line-height: 1.4;
-    padding-top: 15px;
-  }
+  #t-box { font-size: 12px; line-height: 1.4; padding-top: 15px; text-align: center; }
 }
 
-/* Smaller Mobiles (e.g., up to 480px) - Refinements */
+/* Smaller Mobiles (e.g., up to 480px) */
 @media screen and (max-width: 480px) {
   #profile-banner-image { height: 180px; }
   #profile-pic { width: 70px; height: 70px; }
@@ -1226,22 +486,19 @@ header {
   .m-btn { font-size: 11px; padding: 3px 5px; }
   .m-btn i { font-size: 12px; }
 
-  #p-tabs-m .td { font-size: 11px; padding: 0 8px; }
+  #p-tabs-m .td { font-size: 11px; padding: 0 10px; }
   #p-tabs-m .td i { font-size: 18px; }
 
-  #photos .td {
-    /* Example: Stack photos if desired on very small screens */
-    /* width: 50%; height: 120px; */ /* 2 per row */
-    /* Or width: 100%; height: 150px; */ /* 1 per row */
-    height: 80px; /* Keep 3 per row but smaller */
-  }
+  #photos .tb .tr .td { height: 80px; }
+  #photos .tb .tr { display: flex; flex-wrap: wrap; } /* Allow photos to wrap better */
+  #photos .tb .tr .td { width: calc(100% / 2 - 4px); } /* 2 per row, account for border */
+
 
   #c-inp input { font-size: 15px; }
   .p-u-info { font-size: 13px; }
 }
 
-
-/* Very Small Mobiles (e.g., up to 380px) - Further Refinements */
+/* Very Small Mobiles (e.g., up to 380px) */
 @media screen and (max-width: 380px) {
   header { padding: 8px; }
   #logo a i { font-size: 24px; }
@@ -1253,35 +510,29 @@ header {
   #profile-pic { width: 60px; height: 60px; }
   #u-name { font-size: 18px; }
 
-  #p-tabs-m .td { font-size: 10px; }
+  #p-tabs-m .td { font-size: 10px; padding: 0 8px;}
   #p-tabs-m .td i { font-size: 16px; }
 
   #c-inp input { font-size: 14px; }
+  #photos .tb .tr .td { width: calc(100% / 2 - 4px); } /* Keep 2 per row or change to 1 */
 }
 
-/* Mobile Landscape Adjustments (applied on top of general mobile) */
+/* Mobile Landscape Adjustments */
 @media screen and (max-width: 767px) and (orientation: landscape) {
-  #profile-banner-image {
-    height: 120px; /* Even shorter banner in landscape */
-  }
+  #profile-banner-image { height: 120px; }
   #profile-d {
-    flex-direction: row; /* Pic and name side-by-side */
-    align-items: flex-end; /* Align to bottom */
-    bottom: 5px;
+    flex-direction: row; align-items: flex-end; bottom: 5px;
   }
-  #profile-pic {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 0;
-    margin-right: 10px;
-  }
-  #u-name-container { flex-basis: auto; } /* Let it shrink if needed */
-  #u-name {
-    font-size: 18px;
-    margin-bottom: 0;
-  }
-  #m-btns { display: none; } /* Hide buttons in landscape to save vertical space or make them smaller */
+  #profile-pic { width: 50px; height: 50px; margin-bottom: 0; margin-right: 10px; }
+  #u-name { font-size: 18px; margin-bottom: 0; }
+  #m-btns { display: none; /* Or make them very small */ }
 
-  #main-content { padding: 10px; }
+  #main-content > .tb { padding-left: 10px; padding-right: 10px; }
+  #l-col, #m-col { padding: 0 10px; }
   #p-tabs { margin-top: 10px; }
+
+  /* Consider 2-column layout for content in landscape */
+  /* #main-content > .tb { flex-direction: row; }
+  #l-col { width: 40%; order: 1; margin-top: 0; }
+  #m-col { width: 60%; order: 2; } */
 }
