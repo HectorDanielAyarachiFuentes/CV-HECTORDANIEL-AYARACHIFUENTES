@@ -1,21 +1,30 @@
+/* General Reset & Base Styles - Minor additions for responsiveness */
 * {
   outline: none;
+  box-sizing: border-box; /* Add this for easier width/padding management */
+}
+
+html, body {
+  margin: 0; /* Reset body margin for full control */
+  padding: 0;
 }
 
 body {
-  margin: 40px 0px;
+  padding: 40px 0px; /* Your original padding, can be adjusted for mobile */
   background-color: #385591;
+  font-family: Helvetica, Arial, sans-serif; /* Added fallback fonts */
 }
 
 body,
 input,
 button {
-  font-family: Helvetica;
+  font-family: inherit; /* Inherit from body */
 }
 
 img {
   display: block;
-  width: 100%;
+  max-width: 100%; /* Make images responsive by default */
+  height: auto;    /* Maintain aspect ratio */
   border: 0;
 }
 
@@ -41,10 +50,12 @@ button {
   padding: 0;
   border: 0;
   background-color: transparent;
+  cursor: pointer; /* Add cursor for better UX */
 }
 
 ::-moz-placeholder {
   color: #f1f1f1;
+  opacity: 1; /* Firefox needs this */
 }
 
 :-ms-input-placeholder {
@@ -55,6 +66,7 @@ button {
   color: #f1f1f1;
 }
 
+/* Main Container */
 main {
   width: 1280px;
   margin: 0 auto;
@@ -64,6 +76,7 @@ main {
   overflow: hidden;
 }
 
+/* Device Bar - Often hidden on mobile */
 #device-bar-1 {
   text-align: right;
   padding: 6px;
@@ -77,7 +90,6 @@ main {
   float: left;
   margin: 6px;
   border-radius: 50%;
-  cursor: pointer;
 }
 
 #device-bar-1 button:first-child {
@@ -96,10 +108,13 @@ main {
 header {
   padding: 15px 20px;
   background-color: #4267b2;
+  display: flex; /* Using flexbox for easier alignment */
+  align-items: center;
 }
 
 #logo {
   width: 30px;
+  flex-shrink: 0; /* Prevent logo from shrinking */
 }
 
 #logo a {
@@ -111,15 +126,20 @@ header {
   color: #fff;
 }
 
+#search-form { /* Added a wrapper for better control if needed */
+  flex-grow: 1; /* Allow search to take available space if f-name-l is not there */
+  margin-left: 15px;
+}
+
 #search-form form {
   position: relative;
-  width: 280px;
+  width: 280px; /* Max-width can be better for responsiveness */
+  max-width: 100%;
   font-size: 16px;
   padding: 8px 15px;
   padding-right: 37px;
   background-color: #3b5ca0;
   border-radius: 20px;
-  margin-left: 15px;
 }
 
 #search-form form input {
@@ -131,12 +151,12 @@ header {
 
 #search-form form button {
   position: absolute;
-  top: 6px;
+  top: 50%;
+  transform: translateY(-50%); /* Better vertical centering */
   right: 6px;
   color: #f1f1f1;
   height: 22px;
   line-height: 1;
-  cursor: pointer;
 }
 
 #search-form form button i {
@@ -144,11 +164,13 @@ header {
 }
 
 #f-name-l {
-  width: 1px;
+  /* width: 1px; This makes it take minimal space, let's adjust */
   color: #fff;
   font-weight: bold;
   white-space: pre;
+  padding-left: 15px; /* Give some space from search */
   padding-right: 20px;
+  flex-shrink: 0;
 }
 
 #f-name-l span {
@@ -157,7 +179,11 @@ header {
 }
 
 #i-links {
-  width: 1px;
+  /* width: 1px; */ /* Let it take natural width */
+  display: flex; /* For aligning items */
+  align-items: center;
+  margin-left: auto; /* Push to the right */
+  flex-shrink: 0;
 }
 
 #m-td {
@@ -182,10 +208,13 @@ header {
   line-height: 1;
 }
 
+#i-links .td { /* Assuming these .td are direct children for icons */
+  padding: 0 8px;
+}
+
 #i-links i {
   color: #fff;
   font-size: 24px;
-  padding: 0px 8px;
   vertical-align: middle;
 }
 
@@ -196,26 +225,18 @@ header {
   background-color: #f1f1f1;
   border-radius: 50%;
   overflow: hidden;
+  margin-left: 10px; /* Space from other icons */
 }
 
 #p-link img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-
-/* Header finished */
 
 /* Profile image header */
 #profile-upper {
   position: relative;
-}
-
-#profile-d {
-  position: absolute;
-  left: 59px;
-  bottom: 0px;
-  right: 0px;
-  height: 180px;
-  z-index: 2;
 }
 
 #profile-banner-image {
@@ -226,41 +247,64 @@ header {
 
 #profile-banner-image img {
   width: 100%;
-  margin-top: -20%;
+  height: 100%; /* Ensure it covers the area */
+  object-fit: cover; /* Prevents distortion, crops if necessary */
+  /* margin-top: -20%; Consider object-position if you need specific framing */
+}
+
+#profile-d {
+  position: absolute;
+  left: 59px;
+  bottom: 0px;
+  right: 0px; /* Or a specific width */
+  height: 180px;
+  z-index: 2;
+  display: flex; /* For aligning pic and name container */
+  align-items: flex-end; /* Align items to bottom */
 }
 
 #profile-pic {
   width: 180px;
   height: 180px;
   border-radius: 3px;
-  margin-top: 28px;
+  /* margin-top: 28px; No longer needed if aligned to bottom of #profile-d */
   overflow: hidden;
   box-shadow: 0 0 0 5px #fff;
+  flex-shrink: 0;
 }
 
 #profile-pic img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#u-name-container { /* Added a container for name and buttons for better layout */
+  position: relative; /* So #u-name can be absolute to this */
+  margin-left: 20px;
+  padding-bottom: 20px; /* Space for buttons to align with username better */
+  color: #fff;
+  flex-grow: 1;
 }
 
 #u-name {
-  position: absolute;
-  top: 120px;
-  left: 208px;
-  color: #fff;
+  /* position: absolute; top: 120px; left: 208px; */ /* Now relative to #u-name-container */
   font-size: 36px;
   font-weight: bold;
+  margin-bottom: 10px; /* Space before buttons */
 }
 
 #m-btns {
-  position: absolute;
-  right: 56px;
-  bottom: 20px;
-  width: 211px;
+  /* position: absolute; right: 56px; bottom: 20px; width: 211px; */
+  /* Now flows naturally in #u-name-container or can be positioned if needed */
+  display: flex; /* Use flex for buttons */
 }
 
-#m-btns .td {
-  padding: 0 8px;
+#m-btns .td { /* If .td is still used for button wrappers */
+  padding: 0 4px; /* Reduced padding for tighter fit */
 }
+#m-btns .td:first-child {padding-left: 0;}
+
 
 .m-btn {
   cursor: pointer;
@@ -270,25 +314,27 @@ header {
   padding: 5px 8px 6px 8px;
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 2px;
+  display: flex; /* Align icon and text */
+  align-items: center;
 }
 
 .m-btn i {
   font-size: 16px;
-  margin-right: 1px;
-  vertical-align: middle;
+  margin-right: 3px; /* Spacing */
+  vertical-align: middle; /* Keep for fallback */
 }
 
 .m-btn span {
-  position: relative;
-  top: 1px;
+  /* position: relative; top: 1px; */ /* Flex alignment handles this */
 }
 
 #edit-profile {
   position: absolute;
   right: 20px;
-  bottom: 21px;
+  bottom: 20px; /* Adjusted to align with overall bottom padding */
   line-height: 1;
   cursor: pointer;
+  z-index: 3; /* Ensure it's above gradient */
 }
 
 #edit-profile i {
@@ -305,33 +351,47 @@ header {
   background: linear-gradient(rgba(0, 0, 0, 0) 71%, rgba(0, 0, 0, 0.53));
   z-index: 1;
 }
-/* Profile image header finished */
 
 /* Content area */
 #main-content {
   padding: 55px 0px 0px 55px;
+  display: flex; /* Use flexbox for columns */
 }
 
 #l-col,
 #m-col,
 #r-col {
-  vertical-align: top;
+  vertical-align: top; /* Flex handles this, but good fallback */
 }
 
 #l-col {
   width: 340px;
-  padding-top: 6px;
+  padding-top: 6px; /* Original padding */
+  flex-shrink: 0; /* Prevent shrinking */
 }
+
+#m-col {
+  flex-grow: 1; /* Takes remaining space */
+  padding: 0px 55px;
+}
+
+#r-col {
+  position: relative; /* For #chat-bar positioning */
+  width: 150px;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
 
 .l-cnt {
   padding: 20px;
   background-color: #fff;
   box-shadow: 0px 3px 3px #ddd;
+  margin-bottom: 28px; /* Consistent margin, replacing l-mrg */
+}
+.l-cnt:last-child {
+  margin-bottom: 0;
 }
 
-.l-mrg {
-  margin-top: 28px;
-}
 .l-i {
   display: inline-block;
   width: 24px;
@@ -360,18 +420,21 @@ header {
   position: relative;
   padding-right: 24px;
   margin-bottom: 15px;
+  display: flex; /* Align icon and text better */
+  align-items: center;
 }
 
 .cnt-label span {
-  position: relative;
-  top: 2px;
+  /* position: relative; top: 2px; */ /* Flex alignment helps */
   color: #707070;
   font-size: 18px;
+  margin-left: 8px; /* Space after icon if l-i is used here */
 }
 
 .lb-action {
   position: absolute;
-  top: 0px;
+  top: 50%;
+  transform: translateY(-50%); /* Better vertical centering */
   right: 0px;
   cursor: pointer;
 }
@@ -382,7 +445,7 @@ header {
   font-size: 18px;
 }
 
-#b-i i {
+#b-i i { /* Assuming #b-i is a class or id for a specific icon */
   font-size: 24px;
 }
 
@@ -421,55 +484,30 @@ header {
 
 #photos {
   padding: 2px;
-  margin: 15px -20px -20px -20px;
+  margin: 15px -20px -20px -20px; /* Negative margins to break out of .l-cnt padding */
 }
 
 #photos .td {
   width: 33.333%;
   height: 112px;
   border: 2px solid #fff;
-  box-sizing: border-box;
+  /* box-sizing: border-box; Already global */
   background-color: #f1f1f1;
   background-position: 50% 25%;
   background-size: cover;
 }
 
-#photos .tb .tr:nth-child(1) .td:nth-child(1) {
-  background-image: url("Imagenes/Ramon.jpg");
-}
+/* Photo URLs - KEPT AS IS */
+#photos .tb .tr:nth-child(1) .td:nth-child(1) { background-image: url("Imagenes/Ramon.jpg");}
+#photos .tb .tr:nth-child(1) .td:nth-child(2) { background-image: url("Imagenes/Perropianista.jpg");}
+#photos .tb .tr:nth-child(1) .td:nth-child(3) { background-image: url("Imagenes/MollyHermosa.jpg");}
+#photos .tb .tr:nth-child(2) .td:nth-child(1) { background-image: url("Imagenes/Hectorrammon.jpg");}
+#photos .tb .tr:nth-child(2) .td:nth-child(2) { background-image: url("Imagenes/Hector.jpg");}
+#photos .tb .tr:nth-child(2) .td:nth-child(3) { background-image: url("Imagenes/Dulcehermosa4.jpg");}
+#photos .tb .tr:nth-child(3) .td:nth-child(1) { background-image: url("Imagenes/Dulcehermosa3.jpg");}
+#photos .tb .tr:nth-child(3) .td:nth-child(2) { background-image: url("Imagenes/Dulcehermosa1.jpg");}
+#photos .tb .tr:nth-child(3) .td:nth-child(3) { background-image: url("Imagenes/Dulcehermosa.jpg");}
 
-
-#photos .tb .tr:nth-child(1) .td:nth-child(2) {
-  background-image: url("Imagenes/Perropianista.jpg");
-}
-
-#photos .tb .tr:nth-child(1) .td:nth-child(3) {
-  background-image: url("Imagenes/MollyHermosa.jpg");
-}
-
-#photos .tb .tr:nth-child(2) .td:nth-child(1) {
-  background-image: url("Imagenes/Hectorrammon.jpg");
-}
-
-#photos .tb .tr:nth-child(2) .td:nth-child(2) {
-  background-image: url("Imagenes/Hector.jpg");
-}
-
-#photos .tb .tr:nth-child(2) .td:nth-child(3) {
-  background-image: url("Imagenes/Dulcehermosa4.jpg");
-}
-
-#photos .tb .tr:nth-child(3) .td:nth-child(1) {
-  background-image: url("Imagenes/Dulcehermosa3.jpg");
-}
-
-#photos .tb .tr:nth-child(3) .td:nth-child(2) {
-  background-image: url("Imagenes/Dulcehermosa1.jpg");
-}
-
-#photos .tb .tr:nth-child(3) .td:nth-child(3) {
-  background-image: url("Imagenes/Dulcehermosa.jpg");
-}
 
 #k-nm {
   color: #b8b8b8;
@@ -491,8 +529,8 @@ header {
   border-radius: 4px;
 }
 
-.q-ad img {
-  display: inline;
+.q-ad img { /* This was inline, making sure it behaves with flex */
+  display: inline-block; /* Or ensure parent is flex */
   width: 24px;
   height: 24px;
   margin-right: 5px;
@@ -557,11 +595,8 @@ header {
   margin-top: 4px;
 }
 
-#m-col {
-  padding: 0px 55px;
-}
-
-.m-mrg {
+/* Mid Column Specifics */
+.m-mrg { /* Generic margin bottom for mid col elements */
   margin-bottom: 28px;
 }
 
@@ -571,10 +606,10 @@ header {
   color: #919191;
   text-align: center;
   padding: 13px 20px;
-  margin-top: -64px;
+  margin-top: -64px; /* Pulls it up over the banner */
   background-color: #fff;
   box-shadow: 0px 3px 3px #ddd;
-  z-index: 3;
+  z-index: 3; /* Above banner elements */
 }
 
 #p-tabs-m .td {
@@ -606,8 +641,8 @@ header {
   margin-bottom: 5px;
 }
 
-#p-tab-m {
-  width: 1px;
+#p-tab-m { /* "More" tab? */
+  width: 1px; /* Makes it very narrow */
   color: #ccc;
   cursor: pointer;
 }
@@ -628,19 +663,20 @@ header {
 }
 
 #c-tabs {
-  width: auto;
+  width: auto; /* Fine */
   color: #919191;
+  /* display: flex; If .tb isn't working as expected */
 }
 
 #c-tabs .td {
   position: relative;
-  width: 1px;
+  /* width: 1px; Let content define width */
   padding: 0px 15px;
   white-space: pre;
   cursor: pointer;
 }
 
-#c-tabs .td:after {
+#c-tabs .td:after { /* Divider line */
   content: "";
   position: absolute;
   top: 50%;
@@ -671,12 +707,12 @@ header {
   color: #373737;
 }
 
-#c-tabs .td.active span:after {
+#c-tabs .td.active span:after { /* Active tab indicator triangle */
   content: "";
   position: absolute;
   left: 0px;
   right: 0px;
-  bottom: -20px;
+  bottom: -20px; /* Adjust based on #c-tabs-cvr padding */
   width: 10px;
   height: 10px;
   border: 1px solid transparent;
@@ -701,21 +737,27 @@ header {
 #c-c-main {
   position: relative;
   padding-top: 15px;
+  display: flex; /* Align profile pic and input */
+  align-items: center;
 }
 
-#p-c-i {
+#p-c-i { /* Profile pic in composer */
   width: 50px;
+  height: 50px; /* Explicit height */
   border-radius: 50%;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 #p-c-i img {
-  display: block;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 #c-inp {
   padding-left: 20px;
+  flex-grow: 1; /* Input takes remaining space */
 }
 
 #c-inp input {
@@ -724,24 +766,17 @@ header {
   border: 0;
   padding: 0;
   margin: 0;
+  background-color: transparent; /* Ensure no bg from user agent */
 }
 
-#c-c-main input::-moz-placeholder {
-  color: #666;
-}
-
-#c-c-main input:-ms-input-placeholder {
-  color: #666;
-}
-
-#c-c-main input::placeholder {
-  color: #666;
-}
+#c-c-main input::-moz-placeholder { color: #666; opacity: 1;}
+#c-c-main input:-ms-input-placeholder { color: #666; }
+#c-c-main input::placeholder { color: #666; }
 
 #insert_emoji {
   position: absolute;
   right: -2px;
-  bottom: -10px;
+  bottom: -2px; /* Adjusted for better alignment with input field line */
   cursor: pointer;
 }
 
@@ -751,13 +786,18 @@ header {
   font-size: 21px;
 }
 
+/* Post Styling */
 .post {
   padding: 20px;
   background-color: #fff;
   box-shadow: 0px 3px 3px #ddd;
 }
 
-.p-p-pic {
+.post .tb { /* Assuming .tb is used for post header */
+  margin-bottom: 15px; /* Space before content/image */
+}
+
+.p-p-pic { /* Post author pic */
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -766,11 +806,11 @@ header {
 
 .p-p-pic img {
   width: 100%;
-  display: block;
-  border: 0;
+  height: 100%;
+  object-fit: cover;
 }
 
-.p-r-hdr {
+.p-r-hdr { /* Post right header (name, date) */
   vertical-align: top;
   padding-left: 20px;
 }
@@ -783,9 +823,10 @@ header {
 
 .p-u-info a {
   color: #4267b2;
+  font-weight: bold;
 }
 
-.p-dt {
+.p-dt { /* Post date/time */
   color: #a8a8a8;
   font-size: 13px;
 }
@@ -800,64 +841,74 @@ header {
   top: -2px;
 }
 
-.p-opt {
+.p-opt { /* Post options dropdown */
   position: relative;
-  right: -3px;
-  width: 1px;
+  right: -3px; /* Slight adjustment */
+  width: auto; /* Let content define width */
   color: #ccc;
   cursor: pointer;
   vertical-align: top;
 }
 
-.p-cnt-v {
+.p-cnt-v { /* Post content / visual (image/video) */
   display: block;
-  margin: 20px -20px;
+  margin: 20px -20px; /* Negative margin to make it full-bleed within post padding */
   cursor: pointer;
 }
+.p-cnt-v img { /* Ensure image within this is responsive */
+    width: 100%;
+    height: auto;
+}
 
-.p-acts {
-  overflow: hidden;
+.p-text-content { /* Add a class for text posts if any */
+  margin: 15px 0;
+  line-height: 1.5;
+}
+
+
+.p-acts { /* Post actions (like, comment, share) */
+  overflow: hidden; /* Contains floats */
+  display: flex; /* Modern way to align */
+  justify-content: space-between; /* Distribute space */
+  align-items: center;
 }
 
 .p-act {
-  width: 24px;
-  height: 24px;
+  /* width: 24px; height: 24px; No fixed width/height, let content define */
   color: #a3a6aa;
   cursor: pointer;
+  display: flex; /* Align icon and text */
+  align-items: center;
 }
 
 .p-act span {
-  position: relative;
-  top: 1px;
-  width: 20px;
+  /* position: relative; top: 1px; Not needed with flex */
+  /* width: 20px; */ /* Let it be natural */
   font-size: 15px;
   color: #a3a6aa;
+  margin-left: 6px; /* Space after icon */
 }
 
-.like {
-  margin-right: 36px;
+.like, .comment {
+  /* width: 50px; float: left; No longer needed */
+  /* margin-right: 36px for .like only if not using flex justify */
 }
-
-.like,
-.comment {
-  width: 50px;
-  float: left;
-}
+.like { margin-right: 15px;} /* If grouped on left */
 
 .p-act i {
-  vertical-align: middle;
+  vertical-align: middle; /* Fallback */
+  font-size: 18px; /* Consistent icon size */
 }
 
-.like i,
-.comment i {
-  margin-right: 6px;
-}
+/* .like i, .comment i { margin-right: 6px; Handled by .p-act span margin-left } */
 
 .share {
-  float: right;
-  transform: rotateY(180deg);
-  margin-right: -1px;
+  /* float: right; transform: rotateY(180deg); margin-right: -1px; */
+  /* No float needed with flex */
+  /* transform: rotateY(180deg); This is for a specific icon, keep if needed */
 }
+.actions-left { display: flex; } /* Group like and comment */
+
 
 #loading {
   text-align: center;
@@ -869,20 +920,14 @@ header {
   font-size: 32px;
   display: block;
 }
-/* Content area finished */
 
 /* Chat bar */
-#r-col {
-  position: relative;
-  width: 150px;
-}
-
 #chat-bar {
-  position: absolute;
-  top: -55px;
-  right: 55px;
-  bottom: 0px;
-  left: 0px;
+  position: sticky; /* Make chat bar sticky if desired within r-col */
+  top: 55px; /* Adjust based on header height or desired offset */
+  /* Or keep absolute if #r-col has fixed height and overflow */
+  /* position: absolute; top: -55px; right: 55px; bottom: 0px; left: 0px; */
+  padding-top: 20px; /* Space from top of r-col */
 }
 
 #chat-lb {
@@ -903,12 +948,11 @@ header {
   top: 2px;
 }
 
-.on-ct {
+#cts .on-ct { /* Online contacts */
   position: relative;
   width: 50px;
   height: 50px;
-  margin: 28px auto 0 auto;
-  border-radius: 50%;
+  margin: 0 auto 28px auto; /* Centered with bottom margin */
 }
 
 #cts .on-ct:first-child {
@@ -917,9 +961,18 @@ header {
 
 .on-ct img {
   border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.on-ct a:hover img { /* Hover effect directly on img if 'a' wraps it */
+  opacity: 0.8;
+  transform: scale(1.05);
 }
 
-.on-ct.active:after {
+
+.on-ct.active:after { /* Online status indicator */
   content: "";
   position: absolute;
   top: 3px;
@@ -928,11 +981,12 @@ header {
   height: 10px;
   background-color: #2ecd18;
   border-radius: 50%;
-  box-shadow: 0px 0px 0px 3px #e9ebee;
+  box-shadow: 0px 0px 0px 3px #e9ebee; /* e9ebee is main bg */
   z-index: 1;
 }
 
-#ct-sett {
+#ct-sett { /* Chat settings */
+  text-align: center; /* Center the icon button */
   margin-top: 55px;
 }
 
@@ -943,153 +997,291 @@ header {
   border-radius: 50%;
   cursor: pointer;
 }
-/* Chat bar finished */
-
-
-
-/*-Efecto Hoover-----*/
-.on-ct a img {
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.on-ct a:hover img {
-  opacity: 0.8;
-  transform: scale(1.05);
-}
-/*-Efecto Hoover fin-----*/
-
 
 
 /* Media Queries */
 
-/* Media query for 320px screens */
+/* Tablets (e.g., 768px to 1024px) */
+@media screen and (max-width: 1024px) {
+  main {
+    width: 95%;
+  }
+
+  #main-content {
+    padding: 30px 20px 0px 20px;
+  }
+
+  #l-col {
+    width: 280px; /* Slightly narrower for more m-col space */
+  }
+  #m-col {
+    padding: 0 20px;
+  }
+
+  #r-col {
+    display: none; /* Hide chat on tablets */
+  }
+
+  #profile-d {
+    height: 150px;
+    left: 30px; /* Adjust left positioning */
+    right: 30px; /* Add right to constrain */
+  }
+
+  #profile-pic {
+    width: 140px;
+    height: 140px;
+  }
+  #u-name-container {
+    padding-bottom: 10px; /* Adjust spacing */
+  }
+  #u-name {
+    font-size: 28px;
+    /* Removed absolute positioning, relies on flex in #profile-d */
+  }
+  #m-btns { /* Ensure buttons are visible and spaced */
+    /* Adjust if they wrap or overflow */
+  }
+
+  #photos .td {
+    height: 90px;
+  }
+  
+  #f-name-l { display: none; } /* Hide name in header for more space */
+  #search-form { margin-left: 10px; }
+  #search-form form { width: 220px; }
+}
 
 
-@media only screen and (max-width: 320px) {
-
-  /* General Structure */
+/* Mobile Devices (up to 767px) - This will be the main mobile breakpoint */
+@media screen and (max-width: 767px) {
+  body {
+    padding: 0; /* Remove body padding for mobile full bleed */
+  }
   main {
     width: 100%;
-    height: 100%;
-    background-color: #ffffff;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
   }
 
   header {
-    width: 100%;
-    height: 60px;
-    background-color: #3a5795;
+    padding: 10px;
+    position: sticky; /* Optional: make header sticky */
+    top: 0;
+    z-index: 100;
   }
+  #logo a i { font-size: 28px; }
 
-  .profile-upper {
-    width: 100%;
-    height: 250px;
+  #search-form { flex-grow: 1; margin-left: 10px; }
+  #search-form form {
+    width: 100%; /* Full width available */
+    padding: 6px 10px;
+    padding-right: 30px;
   }
-
-  .main-content {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .m-col {
-    width: 50%;
-    padding: 20px;
-  }
-
-  .r-col {
-    width: 25%;
-    padding: 20px;
-  }
-
-  /* Ajustes para tablas y celdas */
-  .tb, .td {
-    width: 100%;
-    display: block;
-  }
-
-  /* Ajustes para el banner */
-  #profile-banner-image img {
-    width: 100%;
-    height: 120%;
-    display: block;
-    object-fit: cover;
-  }
-
-  /* Elementos ocultos en pantallas pequeñas */
-  #device-bar-1, #search-form, #p-tabs, #m-td, #m-btns {
+  #search-form form input { font-size: 14px; }
+  #search-form form button { height: 20px; }
+  #search-form form button i { font-size: 18px; }
+  
+  #f-name-l, #m-td, #i-links .td:not(#p-link) /* Hide name, message icons etc, keep profile link */ {
     display: none;
   }
+  #i-links { margin-left: 10px; } /* Space before profile icon */
+  #p-link { width: 30px; height: 30px;}
 
-  /* Ajustes para el nombre de usuario */
+
+  #profile-banner-image {
+    height: 200px; /* Reduced banner height */
+  }
+  #profile-d {
+    left: 15px; /* Closer to edge */
+    right: 15px;
+    height: auto; /* Auto height based on content */
+    flex-direction: column; /* Stack pic and name vertically */
+    align-items: flex-start; /* Align to start */
+    bottom: 10px; /* Space from bottom of banner */
+  }
+  #profile-pic {
+    width: 80px;
+    height: 80px;
+    box-shadow: 0 0 0 3px #fff;
+    margin-bottom: 10px; /* Space between pic and name */
+  }
+  #u-name-container {
+    margin-left: 0;
+    padding-bottom: 0;
+    width: 100%; /* Take full width */
+  }
   #u-name {
-    position: absolute;
-    top: -89%;
-    left: 2px;
-    color: #ffffff;
-    font-size: 36px;
-    font-weight: bold;
+    font-size: 22px;
+    color: #fff; /* Ensure contrast if banner is dark */
+    margin-bottom: 5px;
+    /* position: static; top: auto; left: auto; Already handled by flex */
+  }
+  #m-btns {
+    flex-wrap: wrap; /* Allow buttons to wrap */
+  }
+  #m-btns .td {
+    padding: 0;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+  .m-btn {
+    font-size: 12px;
+    padding: 4px 6px;
+  }
+  .m-btn i { font-size: 14px; }
+  #edit-profile { display: none; } /* Often hidden on mobile, or redesigned */
+
+
+  #main-content {
+    padding: 15px; /* Consistent padding */
+    flex-direction: column; /* Stack columns */
   }
 
-  /* Ajustes para el contenedor de la información del perfil */
+  #l-col, #m-col {
+    width: 100%;
+    padding: 0; /* Remove padding, children will handle it */
+  }
+  #l-col { order: 2; margin-top: 15px; } /* Example: Show posts before info on mobile */
+  #m-col { order: 1; }
+
+
+  /* Profile Tabs Adjustments */
+  #p-tabs {
+    margin-top: 15px; /* No longer overlapping banner */
+    padding: 10px 5px; /* Reduced padding */
+    box-shadow: 0 1px 2px #ddd;
+    overflow-x: auto; /* Allow horizontal scroll if tabs don't fit */
+    white-space: nowrap; /* Keep tabs in one line */
+  }
+  #p-tabs-m { display: flex; } /* Use flex for tabs inside */
+  #p-tabs-m .td {
+    width: auto; /* Auto width based on content */
+    padding: 0 10px; /* Spacing between tabs */
+    font-size: 12px;
+  }
+  #p-tabs-m .td i {
+    font-size: 20px;
+    margin-bottom: 3px;
+  }
+  #p-tabs-m .td.active span:after {
+    bottom: -10px; /* Adjust underline position */
+  }
+  #p-tab-m { display: none; } /* Hide "more" tab if not scrollable */
+
+
+  /* Content Sections in l-col */
   .l-cnt {
-    padding: 20px;               /* Espaciado interno */
-    background-color: #fff;      
-    box-shadow: 0 0 3px 3px #dddddda5;
-    margin: 10px;                /* Margen alrededor del elemento */
-    position: relative;
-    left: -50px;                 /* Desplazamiento a la izquierda */
-    right: -10px;                /* Desplazamiento a la derecha */
-
-    /* Ajustes para el ancho */
-    width: auto;                 /* Ancho automático basado en el contenido */
-    max-width: 280px;            /* Max-width ajustado para tener en cuenta el padding y el margen */
-    box-sizing: border-box;      /* Asegura que padding y bordes estén incluidos en el ancho */
-}
-
-/* Opcional: Si quieres asegurarte de que todo el contenedor, incluyendo márgenes, no exceda los 320px */
-.l-cnt-container {
-    max-width: 320px;
-    overflow: hidden;            /* Oculta cualquier contenido que se salga */
-}
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  .cnt-label span { font-size: 16px; }
+  #i-box { font-size: 13px; }
+  #photos { margin: 15px -15px -15px -15px; } /* Adjust negative margins to l-cnt padding */
+  #photos .td { height: 100px; /* Adjust photo height */ }
 
 
-#m-col{
-  padding: 7px;
-  background-color: #fff;
-  box-shadow: 0 0 3px 3px #dddddda5;
-  margin: 10px;
-  position: relative; /* Agregado para gestionar correctamente left y right */
-  left: -50px;
-  right: -10px; /* Corregido para ser coherente con left */
-}
+  /* Composer Adjustments */
+  #composer {
+    padding: 15px;
+  }
+  #c-tabs .td {
+    padding: 0px 10px;
+  }
+  #c-tabs .td span {
+    font-size: 13px;
+  }
+  #c-tabs .td i { font-size: 18px; }
+  #c-tabs .td.active span:after { bottom: -16px; } /* Adjust for c-tabs-cvr padding */
+  #p-c-i { width: 40px; height: 40px; }
+  #c-inp { padding-left: 10px; }
+  #c-inp input { font-size: 16px; }
+
+
+  /* Post Adjustments */
+  .post {
+    padding: 15px;
+  }
+  .p-p-pic { width: 40px; height: 40px; }
+  .p-r-hdr { padding-left: 10px; }
+  .p-u-info { font-size: 14px; }
+  .p-dt { font-size: 12px; }
+  .p-cnt-v { margin: 15px -15px; } /* Adjust negative margins to post padding */
+  .p-act span { font-size: 13px; }
+  .p-act i { font-size: 16px; }
 
   #t-box {
-    font-size: 10px;
-    color: #686868;
-    box-shadow: -6px -3px -3px #dddddda5;
+    font-size: 12px;
+    line-height: 1.4;
+    padding-top: 15px;
+  }
+}
 
-    line-height: 15px;
-    margin-top: 10px;
+/* Smaller Mobiles (e.g., up to 480px) - Refinements */
+@media screen and (max-width: 480px) {
+  #profile-banner-image { height: 180px; }
+  #profile-pic { width: 70px; height: 70px; }
+  #u-name { font-size: 20px; }
+  .m-btn { font-size: 11px; padding: 3px 5px; }
+  .m-btn i { font-size: 12px; }
+
+  #p-tabs-m .td { font-size: 11px; padding: 0 8px; }
+  #p-tabs-m .td i { font-size: 18px; }
+
+  #photos .td {
+    /* Example: Stack photos if desired on very small screens */
+    /* width: 50%; height: 120px; */ /* 2 per row */
+    /* Or width: 100%; height: 150px; */ /* 1 per row */
+    height: 80px; /* Keep 3 per row but smaller */
   }
 
-  #p-link {
-    position: absolute;
-    right: 10px;
-    top: 70px;
+  #c-inp input { font-size: 15px; }
+  .p-u-info { font-size: 13px; }
+}
+
+
+/* Very Small Mobiles (e.g., up to 380px) - Further Refinements */
+@media screen and (max-width: 380px) {
+  header { padding: 8px; }
+  #logo a i { font-size: 24px; }
+  #search-form form { padding: 5px 8px; padding-right: 28px; }
+  #search-form form input { font-size: 13px; }
+  #p-link { width: 28px; height: 28px; }
+
+  #profile-banner-image { height: 150px; }
+  #profile-pic { width: 60px; height: 60px; }
+  #u-name { font-size: 18px; }
+
+  #p-tabs-m .td { font-size: 10px; }
+  #p-tabs-m .td i { font-size: 16px; }
+
+  #c-inp input { font-size: 14px; }
+}
+
+/* Mobile Landscape Adjustments (applied on top of general mobile) */
+@media screen and (max-width: 767px) and (orientation: landscape) {
+  #profile-banner-image {
+    height: 120px; /* Even shorter banner in landscape */
   }
-
-
-
-  .p-p-pic  {
+  #profile-d {
+    flex-direction: row; /* Pic and name side-by-side */
+    align-items: flex-end; /* Align to bottom */
+    bottom: 5px;
+  }
+  #profile-pic {
     width: 50px;
-    border-radius: 50%;
-    overflow: hidden;
+    height: 50px;
+    margin-bottom: 0;
+    margin-right: 10px;
   }
-  
-  .p-p-pic img {
-    display: block;
-    width: 100%;
+  #u-name-container { flex-basis: auto; } /* Let it shrink if needed */
+  #u-name {
+    font-size: 18px;
+    margin-bottom: 0;
   }
+  #m-btns { display: none; } /* Hide buttons in landscape to save vertical space or make them smaller */
 
+  #main-content { padding: 10px; }
+  #p-tabs { margin-top: 10px; }
 }
